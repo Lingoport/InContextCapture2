@@ -12,8 +12,8 @@
 		"description": "Command (Ctrl+Shift+U): 'Save all tabs'"
 	},
 	"menuSavePage": {
-		"message": "Guardar página con SingleFile",
-		"description": "Menu entry: 'Save page with SingleFile'"
+		"message": "Guardar página con InContext Capture",
+		"description": "Menu entry: 'Save page with InContext Capture'"
 	},
 	"menuSaveSelectedLinks": {
 		"message": "Guardar los links seleccionados",
@@ -57,7 +57,7 @@
 	},
 	"menuSaveTabs": {
 		"message": "Guardar pestañas",
-		"description": "Menu entry (SingleFile button only): 'Save tabs'"
+		"description": "Menu entry (InContext Capture button only): 'Save tabs'"
 	},
 	"menuSaveSelectedTabs": {
 		"message": "Guardar pestañas seleccionadas",
@@ -96,20 +96,20 @@
 		"description": "Menu entry: 'Auto-save' > Auto-save all tabs'"
 	},
 	"buttonDefaultTooltip": {
-		"message": "Guardar página con SingleFile",
-		"description": "Button title: 'Save page with SingleFile'"
+		"message": "Guardar página con InContext Capture",
+		"description": "Button title: 'Save page with InContext Capture'"
 	},
 	"buttonBlockedBadge": {
 		"message": "🚫",
 		"description": "Button badge when the page is blocked: '🚫'"
 	},
 	"buttonBlockedTooltip": {
-		"message": "Esta página no se puede guardar con SingleFile",
-		"description": "Button title: 'This page cannot be saved with SingleFile'"
+		"message": "Esta página no se puede guardar con InContext Capture",
+		"description": "Button title: 'This page cannot be saved with InContext Capture'"
 	},
 	"buttonInitializingTooltip": {
-		"message": "Inicializando SingleFile",
-		"description": "Button title during initialization: 'Initializing SingleFile (x/2)'"
+		"message": "Inicializando InContext Capture",
+		"description": "Button title during initialization: 'Initializing InContext Capture (x/2)'"
 	},
 	"buttonInitializingBadge": {
 		"message": "•••",
@@ -532,8 +532,8 @@
 		"description": "Options page label: 'period (s)'"
 	},
 	"optionAutoSaveExternalSave": {
-		"message": "guardar la página con SingleFile Companion",
-		"description": "Options page label: 'save the page with SingleFile Companion'"
+		"message": "guardar la página con InContext Capture Companion",
+		"description": "Options page label: 'save the page with InContext Capture Companion'"
 	},
 	"optionsEditorSubTitle": {
 		"message": "editor de anotaciones",
@@ -548,8 +548,8 @@
 		"description": "Options page label: 'open saved pages in a new tab'"
 	},
 	"optionAutoOpenEditor": {
-		"message": "abrir páginas guardadas con SingleFile en el editor de anotaciones",
-		"description": "Options page label: 'open pages saved with SingleFile in the annotation editor'"
+		"message": "abrir páginas guardadas con InContext Capture en el editor de anotaciones",
+		"description": "Options page label: 'open pages saved with InContext Capture in the annotation editor'"
 	},
 	"optionDefaultEditorMode": {
 		"message": "modo predeterminado",
@@ -648,7 +648,7 @@
 		"description": "Options page label: 'add proof of existence'"
 	},
 	"optionsAddProofConfirm": {
-		"message": "Confirm you allow SingleFile to send to the Woleet API a SHA256 hash of each page you are going to save. You can find more information about this feature in the help page or by clicking on the question mark next to the option.",
+		"message": "Confirm you allow InContext Capture to send to the Woleet API a SHA256 hash of each page you are going to save. You can find more information about this feature in the help page or by clicking on the question mark next to the option.",
 		"description": "Popup text displayed wen enabling the option 'add proof of existence'"
 	},
 	"optionWoleetKey": {
@@ -724,8 +724,8 @@
 		"description": "Options page label: 'password'"
 	},
 	"optionSaveWithCompanion": {
-		"message": "guardar la página con SingleFile Companion",
-		"description": "Options page label: 'save with SingleFile Companion'"
+		"message": "guardar la página con InContext Capture Companion",
+		"description": "Options page label: 'save with InContext Capture Companion'"
 	},
 	"optionSaveCreatedBookmarks": {
 		"message": "guardar la página de un marcador recién creado",
@@ -808,8 +808,8 @@
 		"description": "Width of the log panel in pixels, it should be adjusted for the longest label beginning with 'log' (e.g. 'logPanelDeferredImages')"
 	},
 	"topPanelError": {
-		"message": "Error de SingleFile: ",
-		"description": "Label 'SingleFile error: ' in the top panel when displaying an error message"
+		"message": "Error de InContext Capture: ",
+		"description": "Label 'InContext Capture error: ' in the top panel when displaying an error message"
 	},
 	"topPanelEmbeddedImageButton": {
 		"message": "Abrir imagen...",

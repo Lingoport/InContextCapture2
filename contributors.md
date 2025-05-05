@@ -1,4 +1,4 @@
-# SingleFile
+# InContext Capture
 
 ## Contributors
 

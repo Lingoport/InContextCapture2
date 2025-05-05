@@ -12,8 +12,8 @@
 		"description": "Command (Ctrl+Shift+U): 'Save all tabs'"
 	},
 	"menuSavePage": {
-		"message": "Səhifəni SingleFile ilə yaddaşa qeyd et",
-		"description": "Menu entry: 'Save page with SingleFile'"
+		"message": "Səhifəni InContext Capture ilə yaddaşa qeyd et",
+		"description": "Menu entry: 'Save page with InContext Capture'"
 	},
 	"menuSaveSelectedLinks": {
 		"message": "Seçilmiş linkləri yaddaşa qeyd et",
@@ -57,7 +57,7 @@
 	},
 	"menuSaveTabs": {
 		"message": "Tabları yaddaşa qeyd et",
-		"description": "Menu entry (SingleFile button only): 'Save tabs'"
+		"description": "Menu entry (InContext Capture button only): 'Save tabs'"
 	},
 	"menuSaveSelectedTabs": {
 		"message": "Seçilmiş tabları yaddaşa qeyd et",
@@ -96,20 +96,20 @@
 		"description": "Menu entry: 'Auto-save' > Auto-save all tabs'"
 	},
 	"buttonDefaultTooltip": {
-		"message": "SingleFile ilə səhifəni yaddaşa qeyd et",
-		"description": "Button title: 'Save page with SingleFile'"
+		"message": "InContext Capture ilə səhifəni yaddaşa qeyd et",
+		"description": "Button title: 'Save page with InContext Capture'"
 	},
 	"buttonBlockedBadge": {
 		"message": "🚫",
 		"description": "Button badge when the page is blocked: '🚫'"
 	},
 	"buttonBlockedTooltip": {
-		"message": "Bu səhifə SingleFile ilə yaddaşa qeyd edilə bilmir",
-		"description": "Button title: 'This page cannot be saved with SingleFile'"
+		"message": "Bu səhifə InContext Capture ilə yaddaşa qeyd edilə bilmir",
+		"description": "Button title: 'This page cannot be saved with InContext Capture'"
 	},
 	"buttonInitializingTooltip": {
-		"message": "SingleFile Başlatırlır",
-		"description": "Button title during initialization: 'Initializing SingleFile (x/2)'"
+		"message": "InContext Capture Başlatırlır",
+		"description": "Button title during initialization: 'Initializing InContext Capture (x/2)'"
 	},
 	"buttonInitializingBadge": {
 		"message": "•••",
@@ -140,7 +140,7 @@
 		"description": "Badge label when auto-save is active"
 	},
 	"optionsTitle": {
-		"message": "SingleFile seçimləri",
+		"message": "InContext Capture seçimləri",
 		"description": "Options page title"
 	},
 	"optionsUserInterfaceSubTitle": {
@@ -533,7 +533,7 @@
 	},
 	"optionAutoSaveExternalSave": {
 		"message": "xarici yaddaşa qeyd et",
-		"description": "Options page label: 'save the page with SingleFile Companion'"
+		"description": "Options page label: 'save the page with InContext Capture Companion'"
 	},
 	"optionsEditorSubTitle": {
 		"message": "Redaktor",
@@ -549,7 +549,7 @@
 	},
 	"optionAutoOpenEditor": {
 		"message": "səhifəni yaddaşa qeyd etdikdən sonra redaktoru avtomatik olaraq açın",
-		"description": "Options page label: 'open pages saved with SingleFile in the annotation editor'"
+		"description": "Options page label: 'open pages saved with InContext Capture in the annotation editor'"
 	},
 	"optionDefaultEditorMode": {
 		"message": "standart rejim",
@@ -648,7 +648,7 @@
 		"description": "Options page label: 'add proof of existence'"
 	},
 	"optionsAddProofConfirm": {
-		"message": "SingleFile-a saxlayacağınız hər səhifənin SHA256 hash-ini Woleet API-yə göndərməyə icazə verdiyinizi təsdiq edin. Bu funksiya haqqında daha çox məlumatı yardım səhifəsində və ya seçimin yanındakı sual işarəsinə klikləməklə tapa bilərsiniz.",
+		"message": "InContext Capture-a saxlayacağınız hər səhifənin SHA256 hash-ini Woleet API-yə göndərməyə icazə verdiyinizi təsdiq edin. Bu funksiya haqqında daha çox məlumatı yardım səhifəsində və ya seçimin yanındakı sual işarəsinə klikləməklə tapa bilərsiniz.",
 		"description": "Popup text displayed wen enabling the option 'add proof of existence'"
 	},
 	"optionWoleetKey": {
@@ -724,8 +724,8 @@
 		"description": "Options page label: 'password'"
 	},
 	"optionSaveWithCompanion": {
-		"message": "SingleFile Companion ilə yaddaşa qeyd edin",
-		"description": "Options page label: 'save with SingleFile Companion'"
+		"message": "InContext Capture Companion ilə yaddaşa qeyd edin",
+		"description": "Options page label: 'save with InContext Capture Companion'"
 	},
 	"optionSaveCreatedBookmarks": {
 		"message": "yaddaşa qeyd edilmiş səhifənin yerini yaddaşa qeyd edin",
@@ -808,8 +808,8 @@
 		"description": "Width of the log panel in pixels, it should be adjusted for the longest label beginning with 'log' (e.g. 'logPanelDeferredImages')"
 	},
 	"topPanelError": {
-		"message": "SingleFile xətası: ",
-		"description": "Label 'SingleFile error: ' in the top panel when displaying an error message"
+		"message": "InContext Capture xətası: ",
+		"description": "Label 'InContext Capture error: ' in the top panel when displaying an error message"
 	},
 	"topPanelEmbeddedImageButton": {
 		"message": "Şəkil əlavə et...",

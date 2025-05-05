@@ -9,7 +9,7 @@ export default [{
 	output: [{
 		file: "lib/single-file.js",
 		format: "umd",
-		name: "singlefile",
+		name: "InContext Capture",
 		plugins: [terser()]
 	}],
 	plugins: PLUGINS,
@@ -19,7 +19,7 @@ export default [{
 	output: [{
 		file: "lib/single-file-frames.js",
 		format: "umd",
-		name: "singlefile",
+		name: "InContext Capture",
 		plugins: [terser()]
 	}],
 	plugins: PLUGINS,
@@ -29,7 +29,7 @@ export default [{
 	output: [{
 		file: "lib/single-file-bootstrap.js",
 		format: "umd",
-		name: "singlefileBootstrap",
+		name: "InContext CaptureBootstrap",
 		plugins: [terser()]
 	}],
 	plugins: PLUGINS,
@@ -133,7 +133,7 @@ export default [{
 	output: [{
 		file: "lib/single-file-extension-editor-helper.js",
 		format: "umd",
-		name: "singlefile",
+		name: "InContext Capture",
 		plugins: [terser()]
 	}],
 	plugins: PLUGINS,

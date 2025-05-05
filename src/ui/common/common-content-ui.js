@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of SingleFile.
+ * This file is part of InContext Capture.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -23,14 +23,14 @@
 
 /* global document, getComputedStyle, FileReader, Image, OffscreenCanvas, createImageBitmap */
 
-const singlefile = globalThis.singlefile;
+const InContext Capture = globalThis.InContext Capture;
 
 const CLOSE_ICON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AYht+mSlUqHewg4hChOogFURFHqWIRLJS2QqsOJpf+CE0akhQXR8G14ODPYtXBxVlXB1dBEPwBcXNzUnSREr9LCi1ivOO4h/e+9+XuO0Col5lqdowDqmYZqXhMzOZWxMAruhGiOYohiZl6Ir2Qgef4uoeP73dRnuVd9+foVfImA3wi8SzTDYt4nXh609I57xOHWUlSiM+Jxwy6IPEj12WX3zgXHRZ4ZtjIpOaIw8RisY3lNmYlQyWeIo4oqkb5QtZlhfMWZ7VcZc178hcG89pymuu0BhHHIhJIQoSMKjZQhoUo7RopJlJ0HvPwDzj+JLlkcm2AkWMeFaiQHD/4H/zurVmYnHCTgjGg88W2P4aBwC7QqNn297FtN04A/zNwpbX8lTow80l6raVFjoDQNnBx3dLkPeByB+h/0iVDciQ/LaFQAN7P6JtyQN8t0LPq9q15jtMHIEO9WroBDg6BkSJlr3m8u6u9b//WNPv3A6mTcr3f/E/sAAAABmJLR0QAigCKAIrj2uckAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5QkPDysvCdPVuwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAELSURBVHja7ZpLFsIwDAPj3v/OsGHDe1BIa8tKO7Mnlkw+dpoxAAAAAGCfx4ur6Yx/B337UUS4mp/VuWUEcjSfOgO+BXCZCWe0hSqQo/npBLglIUNLdAV2MH84Ad1JyIwdLkK6YoabIHWscBWmihHuAqvHtv+XqmdXOK9TxdKy3axUm2vZkXXGgPJksTuz1bVFeeU2Y6ijsLIpXbtKa1kDs2ews69o7+A+ihJ2lvI+/lcS1G21zUVG18XKNm4OS4BNkGOQQohSmGaIdpgLESvzyiRwKepsXjE2H0ZWMF8Zi4+jK5mviM0DiRXNZ2rhkdTK5jO0xermz2o8dCnq+FS2XNNVH0sDAAAA3JYnre9cH8BZmhEAAAAASUVORK5CYII=";
 
-const SINGLE_FILE_UI_ELEMENT_CLASS = singlefile.helper.SINGLE_FILE_UI_ELEMENT_CLASS;
-const ERROR_BAR_TAGNAME = "singlefile-error-bar";
-const OPEN_FILE_BAR_TAGNAME = "singlefile-open-file-bar";
-const SHARE_PAGE_BAR_TAGNAME = "singlefile-share-page-bar";
+const SINGLE_FILE_UI_ELEMENT_CLASS = InContext Capture.helper.SINGLE_FILE_UI_ELEMENT_CLASS;
+const ERROR_BAR_TAGNAME = "InContext Capture-error-bar";
+const OPEN_FILE_BAR_TAGNAME = "InContext Capture-open-file-bar";
+const SHARE_PAGE_BAR_TAGNAME = "InContext Capture-share-page-bar";
 let EMBEDDED_IMAGE_BUTTON_MESSAGE, SHARE_PAGE_BUTTON_MESSAGE, SHARE_SELECTION_BUTTON_MESSAGE, ERROR_TITLE_MESSAGE;
 
 const CSS_PROPERTIES = new Set(Array.from(getComputedStyle(document.documentElement)));
@@ -48,7 +48,7 @@ function setLabels(labels) {
 }
 
 function onError(message, link) {
-	console.error("SingleFile", message, link); // eslint-disable-line no-console
+	console.error("InContext Capture", message, link); // eslint-disable-line no-console
 	displayBar(ERROR_BAR_TAGNAME, ERROR_TITLE_MESSAGE + message, { link });
 }
 
@@ -176,7 +176,7 @@ function displayBar(tagName, message, { link, buttonLabel, buttonOnclick } = {})
 					padding: 2px;
 					font-family: Arial;
 				}
-				.singlefile-open-file-bar.container, .singlefile-share-page-bar.container {
+				.InContext Capture-open-file-bar.container, .InContext Capture-share-page-bar.container {
 					background-color: gainsboro;
 					border-block-end: gray 1px solid;
 				}
@@ -206,10 +206,10 @@ function displayBar(tagName, message, { link, buttonLabel, buttonOnclick } = {})
 					font-size: .8rem;
 					align-self: center;
 				}
-				.singlefile-open-file-bar button, .singlefile-share-page-bar button{
+				.InContext Capture-open-file-bar button, .InContext Capture-share-page-bar button{
 					background-color: dimgrey;
 				}
-				.singlefile-open-file-bar .close-button, .singlefile-share-page-bar .close-button{
+				.InContext Capture-open-file-bar .close-button, .InContext Capture-share-page-bar .close-button{
 					filter: invert(1);
 				}
 				a {

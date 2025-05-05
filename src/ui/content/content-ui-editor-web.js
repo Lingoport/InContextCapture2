@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of SingleFile.
+ * This file is part of InContext Capture.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -30,7 +30,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 
 	const IS_NOT_SAFARI = !/Safari/.test(navigator.userAgent) || /Chrome/.test(navigator.userAgent) || /Vivaldi/.test(navigator.userAgent) || /OPR/.test(navigator.userAgent);
 
-	const singlefile = globalThis.singlefile;
+	const InContext Capture = globalThis.InContext Capture;
 
 	const FORBIDDEN_TAG_NAMES = ["a", "area", "audio", "base", "br", "col", "command", "embed", "hr", "img", "iframe", "input", "keygen", "link", "meta", "param", "source", "track", "video", "wbr"];
 	const BUTTON_ANCHOR_URL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TtaIVETuIOASsThZERRylikWwUNoKrTqYXPohNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APEydFJ0UVK/F9SaBHjwXE/3t173L0DhFqJqWbbOKBqlpGMRcVMdkUMvKIbfQCG0SExU4+nFtLwHF/38PH1LsKzvM/9OXqUnMkAn0g8y3TDIl4nnt60dM77xCFWlBTic+Ixgy5I/Mh12eU3zgWHBZ4ZMtLJOeIQsVhoYbmFWdFQiaeIw4qqUb6QcVnhvMVZLVVY4578hcGctpziOs0hxLCIOBIQIaOCDZRgIUKrRoqJJO1HPfyDjj9BLplcG2DkmEcZKiTHD/4Hv7s185MTblIwCrS/2PbHCBDYBepV2/4+tu36CeB/Bq60pr9cA2Y+Sa82tfAR0LsNXFw3NXkPuNwBBp50yZAcyU9TyOeB9zP6pizQfwt0rbq9NfZx+gCkqaulG+DgEBgtUPaax7s7W3v790yjvx825XKP2aKCdAAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+QLEQA4M3Y7LzIAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAACVBMVEUAAAAAAACKioqjwG1pAAAAAXRSTlMAQObYZgAAAAFiS0dEAmYLfGQAAABkSURBVBjThc47CsNADIThWfD0bnSfbdIroP/+V0mhsN5gTNToK0YPaSvnF9B9wGykG54j/2GF1/hauE4E1AOuNxrBdA5KUXIqdiCnqC1zIZ2mFJQzKJ3wesOhcwDM4+fo7cOuD9C4HTQ9HAAQAAAAAElFTkSuQmCC";
@@ -65,14 +65,14 @@ import { downloadPageForeground } from "../../core/common/download.js";
 	const NOTE_INITIAL_HEIGHT = 150;
 	const NOTE_HEADER_HEIGHT = 25;
 	const DISABLED_NOSCRIPT_ATTRIBUTE_NAME = "data-single-file-disabled-noscript";
-	const COMMENT_HEADER = "Page saved with SingleFile";
-	const COMMENT_HEADER_LEGACY = "Archive processed by SingleFile";
+	const COMMENT_HEADER = "Page saved with InContext Capture";
+	const COMMENT_HEADER_LEGACY = "Archive processed by InContext Capture";
 
 	let NOTES_WEB_STYLESHEET, MASK_WEB_STYLESHEET, HIGHLIGHTS_WEB_STYLESHEET;
 	let selectedNote, anchorElement, maskNoteElement, maskPageElement, highlightSelectionMode, removeHighlightMode, resizingNoteMode, movingNoteMode, highlightColor, collapseNoteTimeout, cuttingOuterMode, cuttingMode, cuttingTouchTarget, cuttingPath, cuttingPathIndex, previousContent;
 	let removedElements = [], removedElementIndex = 0, initScriptContent, pageResources, pageUrl, pageCompressContent, includeInfobar, openInfobar, infobarPositionAbsolute, infobarPositionTop, infobarPositionBottom, infobarPositionLeft, infobarPositionRight;
 
-	globalThis.zip = singlefile.helper.zip;
+	globalThis.zip = InContext Capture.helper.zip;
 	initEventListeners();
 	new MutationObserver(initEventListeners).observe(document, { childList: true });
 
@@ -182,7 +182,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 					pageOptions.backgroundSave = message.backgroundSave;
 					pageOptions.saveDate = new Date(pageOptions.saveDate);
 					pageOptions.visitDate = new Date(pageOptions.visitDate);
-					filename = await singlefile.helper.formatFilename(content, document, pageOptions);
+					filename = await InContext Capture.helper.formatFilename(content, document, pageOptions);
 				}
 				if (message.sharePage) {
 					setLabels(message.labels);
@@ -194,7 +194,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 						content,
 						filename,
 						title: document.title,
-						doctype: singlefile.helper.getDoctypeString(document),
+						doctype: InContext Capture.helper.getDoctypeString(document),
 						url: pageUrl,
 						viewport: viewport ? viewport.content : null,
 						compressContent: true,
@@ -227,7 +227,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 				printPage();
 			}
 			if (message.method == "displayInfobar") {
-				singlefile.helper.displayIcon(document, true, {
+				InContext Capture.helper.displayIcon(document, true, {
 					openInfobar: message.openInfobar,
 					infobarPositionAbsolute: message.infobarPositionAbsolute,
 					infobarPositionTop: message.infobarPositionTop,
@@ -236,9 +236,9 @@ import { downloadPageForeground } from "../../core/common/download.js";
 					infobarPositionRight: message.infobarPositionRight
 				});
 				const infobarDoc = document.implementation.createHTMLDocument();
-				infobarDoc.body.appendChild(document.querySelector(singlefile.helper.INFOBAR_TAGNAME));
+				infobarDoc.body.appendChild(document.querySelector(InContext Capture.helper.INFOBAR_TAGNAME));
 				serializeShadowRoots(infobarDoc.body);
-				const content = singlefile.helper.serialize(infobarDoc, true);
+				const content = InContext Capture.helper.serialize(infobarDoc, true);
 				window.parent.postMessage(JSON.stringify({
 					method: "displayInfobar",
 					content
@@ -288,7 +288,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 				delete zipOptions.workerScripts;
 			}
 			zipOptions.useWebWorkers = IS_NOT_SAFARI;
-			const { docContent, origDocContent, resources, url } = await singlefile.helper.extract(content, {
+			const { docContent, origDocContent, resources, url } = await InContext Capture.helper.extract(content, {
 				password,
 				prompt,
 				shadowRootScriptURL: new URL("/lib/single-file-extension-editor-init.js", document.baseURI).href,
@@ -299,8 +299,8 @@ import { downloadPageForeground } from "../../core/common/download.js";
 			pageCompressContent = true;
 			const contentDocument = (new DOMParser()).parseFromString(docContent, "text/html");
 			if (detectSavedPage(contentDocument)) {
-				await singlefile.helper.display(document, docContent, { disableFramePointerEvents: true });
-				const infobarElement = document.querySelector(singlefile.helper.INFOBAR_TAGNAME);
+				await InContext Capture.helper.display(document, docContent, { disableFramePointerEvents: true });
+				const infobarElement = document.querySelector(InContext Capture.helper.INFOBAR_TAGNAME);
 				if (infobarElement) {
 					infobarElement.remove();
 				}
@@ -347,7 +347,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 				} else if (document.doctype) {
 					document.doctype.remove();
 				}
-				const infobarElement = contentDocument.querySelector(singlefile.helper.INFOBAR_TAGNAME);
+				const infobarElement = contentDocument.querySelector(InContext Capture.helper.INFOBAR_TAGNAME);
 				if (infobarElement) {
 					infobarElement.remove();
 				}
@@ -361,7 +361,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 					element.style.setProperty(pointerEvents, "none", "important");
 				});
 				document.replaceChild(contentDocument.documentElement, document.documentElement);
-				document.querySelectorAll("[data-single-file-note-refs]").forEach(noteRefElement => noteRefElement.dataset.singleFileNoteRefs = noteRefElement.dataset.singleFileNoteRefs.replace(/,/g, " "));
+				document.querySelectorAll("[data-single-file-note-refs]").forEach(noteRefElement => noteRefElement.dataset.InContext CaptureNoteRefs = noteRefElement.dataset.InContext CaptureNoteRefs.replace(/,/g, " "));
 				deserializeShadowRoots(document);
 				document.querySelectorAll(NOTE_TAGNAME).forEach(containerElement => attachNoteListeners(containerElement, true));
 				insertHighlightStylesheet(document);
@@ -400,7 +400,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 			element.style.setProperty("-sf-" + pointerEvents, element.style.getPropertyValue(pointerEvents), element.style.getPropertyPriority(pointerEvents));
 			element.style.setProperty(pointerEvents, "none", "important");
 		});
-		document.querySelectorAll("[data-single-file-note-refs]").forEach(noteRefElement => noteRefElement.dataset.singleFileNoteRefs = noteRefElement.dataset.singleFileNoteRefs.replace(/,/g, " "));
+		document.querySelectorAll("[data-single-file-note-refs]").forEach(noteRefElement => noteRefElement.dataset.InContext CaptureNoteRefs = noteRefElement.dataset.InContext CaptureNoteRefs.replace(/,/g, " "));
 		deserializeShadowRoots(document);
 		reflowNotes();
 		await waitResourcesLoad();
@@ -679,7 +679,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 			let element = event.target, done;
 			while (element && !done) {
 				if (element.classList.contains(HIGHLIGHT_CLASS)) {
-					document.querySelectorAll("." + HIGHLIGHT_CLASS + "[data-singlefile-highlight-id=" + JSON.stringify(element.dataset.singlefileHighlightId) + "]").forEach(highlightedElement => {
+					document.querySelectorAll("." + HIGHLIGHT_CLASS + "[data-InContext Capture-highlight-id=" + JSON.stringify(element.dataset.InContext CaptureHighlightId) + "]").forEach(highlightedElement => {
 						resetHighlightedElement(highlightedElement);
 						onUpdate(false);
 					});
@@ -999,7 +999,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 
 	function highlightSelection() {
 		let highlightId = 0;
-		document.querySelectorAll("." + HIGHLIGHT_CLASS).forEach(highlightedElement => highlightId = Math.max(highlightId, highlightedElement.dataset.singlefileHighlightId));
+		document.querySelectorAll("." + HIGHLIGHT_CLASS).forEach(highlightedElement => highlightId = Math.max(highlightId, highlightedElement.dataset.InContext CaptureHighlightId));
 		highlightId++;
 		const selection = window.getSelection();
 		const highlightedNodes = new Set();
@@ -1059,7 +1059,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 				resetHighlightedElement(node);
 				node.classList.add(HIGHLIGHT_CLASS);
 				node.classList.add(highlightColor);
-				node.dataset.singlefileHighlightId = highlightId;
+				node.dataset.InContext CaptureHighlightId = highlightId;
 			} else if (node.parentElement) {
 				highlightTextNode(node);
 			}
@@ -1070,7 +1070,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 			spanElement.classList.add(HIGHLIGHT_CLASS);
 			spanElement.classList.add(highlightColor);
 			spanElement.textContent = node.textContent;
-			spanElement.dataset.singlefileHighlightId = highlightId;
+			spanElement.dataset.InContext CaptureHighlightId = highlightId;
 			node.parentNode.replaceChild(spanElement, node);
 			return spanElement;
 		}
@@ -1097,7 +1097,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 		const classesToPreserve = ["single-file-highlight", "single-file-highlight-yellow", "single-file-highlight-green", "single-file-highlight-pink", "single-file-highlight-blue"];
 		document.querySelectorAll(NOTE_TAGNAME).forEach(containerElement => {
 			shadowRoots[containerElement.dataset.noteId] = containerElement.shadowRoot;
-			const className = "singlefile-note-id-" + containerElement.dataset.noteId;
+			const className = "InContext Capture-note-id-" + containerElement.dataset.noteId;
 			containerElement.classList.add(className);
 			classesToPreserve.push(className);
 		});
@@ -1122,8 +1122,8 @@ import { downloadPageForeground } from "../../core/common/download.js";
 			document.body.appendChild(optionsElement);
 		}
 		document.querySelectorAll(NOTE_TAGNAME).forEach(containerElement => {
-			const noteId = (Array.from(containerElement.classList).find(className => /singlefile-note-id-\d+/.test(className))).split("singlefile-note-id-")[1];
-			containerElement.classList.remove("singlefile-note-id-" + noteId);
+			const noteId = (Array.from(containerElement.classList).find(className => /InContext Capture-note-id-\d+/.test(className))).split("InContext Capture-note-id-")[1];
+			containerElement.classList.remove("InContext Capture-note-id-" + noteId);
 			containerElement.dataset.noteId = noteId;
 			if (!containerElement.shadowRoot) {
 				containerElement.attachShadow({ mode: "open" });
@@ -1152,13 +1152,13 @@ import { downloadPageForeground } from "../../core/common/download.js";
 		titleElement.classList.add("reader-title");
 		titleElement.textContent = article.title;
 		document.body.insertBefore(titleElement, document.body.firstChild);
-		const existingMetaDataElement = document.querySelector("script[id=singlefile-readability-metadata]");
+		const existingMetaDataElement = document.querySelector("script[id=InContext Capture-readability-metadata]");
 		if (existingMetaDataElement) {
 			existingMetaDataElement.remove();
 		}
 		const metaDataElement = document.createElement("script");
 		metaDataElement.type = "application/json";
-		metaDataElement.id = "singlefile-readability-metadata";
+		metaDataElement.id = "InContext Capture-readability-metadata";
 		metaDataElement.textContent = JSON.stringify(articleMetadata, null, 2);
 		document.head.appendChild(metaDataElement);
 		document.querySelectorAll("a[href]").forEach(element => {
@@ -1211,16 +1211,16 @@ import { downloadPageForeground } from "../../core/common/download.js";
 			element.textContent = element.getAttribute(DISABLED_NOSCRIPT_ATTRIBUTE_NAME);
 			element.removeAttribute(DISABLED_NOSCRIPT_ATTRIBUTE_NAME);
 		});
-		doc.querySelectorAll("." + MASK_CLASS + ", " + singlefile.helper.INFOBAR_TAGNAME + ", ." + REMOVED_CONTENT_CLASS).forEach(element => element.remove());
+		doc.querySelectorAll("." + MASK_CLASS + ", " + InContext Capture.helper.INFOBAR_TAGNAME + ", ." + REMOVED_CONTENT_CLASS).forEach(element => element.remove());
 		if (includeInfobar) {
-			const options = singlefile.helper.extractInfobarData(doc);
+			const options = InContext Capture.helper.extractInfobarData(doc);
 			options.openInfobar = openInfobar;
 			options.infobarPositionAbsolute = infobarPositionAbsolute;
 			options.infobarPositionTop = infobarPositionTop;
 			options.infobarPositionRight = infobarPositionRight;
 			options.infobarPositionBottom = infobarPositionBottom;
 			options.infobarPositionLeft = infobarPositionLeft;
-			singlefile.helper.appendInfobar(doc, options);
+			InContext Capture.helper.appendInfobar(doc, options);
 		}
 		doc.querySelectorAll("." + HIGHLIGHT_CLASS).forEach(noteElement => noteElement.classList.remove(HIGHLIGHT_HIDDEN_CLASS));
 		doc.querySelectorAll(`template[${SHADOWROOT_ATTRIBUTE_NAME}]`).forEach(templateElement => {
@@ -1255,12 +1255,12 @@ import { downloadPageForeground } from "../../core/common/download.js";
 					element.src = resource.name;
 				}
 			}));
-			let content = singlefile.helper.serialize(doc, compressHTML);
+			let content = InContext Capture.helper.serialize(doc, compressHTML);
 			resources.sort((resourceLeft, resourceRight) => resourceRight.content.length - resourceLeft.content.length);
 			resources.forEach(resource => content = content.replaceAll(resource.content, resource.name));
 			return content + "<script " + SCRIPT_TEMPLATE_SHADOW_ROOT + ">" + getEmbedScript() + "</script>";
 		} else {
-			return singlefile.helper.serialize(doc, compressHTML) + "<script " + SCRIPT_TEMPLATE_SHADOW_ROOT + ">" + getEmbedScript() + "</script>";
+			return InContext Capture.helper.serialize(doc, compressHTML) + "<script " + SCRIPT_TEMPLATE_SHADOW_ROOT + ">" + getEmbedScript() + "</script>";
 		}
 	}
 
@@ -1325,7 +1325,7 @@ import { downloadPageForeground } from "../../core/common/download.js";
 		element.classList.remove("single-file-highlight-pink");
 		element.classList.remove("single-file-highlight-blue");
 		element.classList.remove("single-file-highlight-green");
-		delete element.dataset.singlefileHighlightId;
+		delete element.dataset.InContext CaptureHighlightId;
 	}
 
 	function serializeShadowRoots(node) {
@@ -2385,16 +2385,16 @@ pre code {
 		if (noteRefs.length) {
 			setNoteRefs(anchorElement, noteRefs);
 		} else {
-			delete anchorElement.dataset.singleFileNoteRefs;
+			delete anchorElement.dataset.InContext CaptureNoteRefs;
 		}
 	}
 
 	function getNoteRefs(anchorElement) {
-		return anchorElement.dataset.singleFileNoteRefs ? anchorElement.dataset.singleFileNoteRefs.split(" ") : [];
+		return anchorElement.dataset.InContext CaptureNoteRefs ? anchorElement.dataset.InContext CaptureNoteRefs.split(" ") : [];
 	}
 
 	function setNoteRefs(anchorElement, noteRefs) {
-		anchorElement.dataset.singleFileNoteRefs = noteRefs.join(" ");
+		anchorElement.dataset.InContext CaptureNoteRefs = noteRefs.join(" ");
 	}
 
 	function minifyText(text) {

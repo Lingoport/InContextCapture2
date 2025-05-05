@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of SingleFile.
+ * This file is part of InContext Capture.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -25,11 +25,11 @@
 
 const MAX_CONTENT_SIZE = 32 * (1024 * 1024);
 
-const singlefile = globalThis.singlefileBootstrap;
+const InContext Capture = globalThis.InContext CaptureBootstrap;
 const pendingResponses = new Map();
 
 let unloadListenerAdded, optionsAutoSave, tabId, tabIndex, autoSaveEnabled, autoSaveTimeout, autoSavingPage, pageAutoSaved, previousLocationHref, savedPageDetected, compressContent, extractDataFromPageTags, insertTextBody, insertMetaCSP;
-singlefile.pageInfo = {
+InContext Capture.pageInfo = {
 	updatedResources: {},
 	visitDate: new Date()
 };
@@ -59,7 +59,7 @@ browser.runtime.onMessage.addListener(message => {
 		message.method == "content.init" ||
 		message.method == "content.openEditor" ||
 		message.method == "devtools.resourceCommitted" ||
-		message.method == "singlefile.fetchResponse") {
+		message.method == "InContext Capture.fetchResponse") {
 		return onMessage(message);
 	}
 });
@@ -105,7 +105,7 @@ function getContent() {
 			}
 			const requestId = pendingResponses.size;
 			pendingResponses.set(requestId, { resolve, reject });
-			browser.runtime.sendMessage({ method: "singlefile.fetch", requestId, url: location.href });
+			browser.runtime.sendMessage({ method: "InContext Capture.fetch", requestId, url: location.href });
 		};
 	});
 }
@@ -138,10 +138,10 @@ async function onMessage(message) {
 		return {};
 	}
 	if (message.method == "devtools.resourceCommitted") {
-		singlefile.pageInfo.updatedResources[message.url] = { content: message.content, type: message.type, encoding: message.encoding };
+		InContext Capture.pageInfo.updatedResources[message.url] = { content: message.content, type: message.type, encoding: message.encoding };
 		return {};
 	}
-	if (message.method == "singlefile.fetchResponse") {
+	if (message.method == "InContext Capture.fetchResponse") {
 		return await onFetchResponse(message);
 	}
 }
@@ -174,11 +174,11 @@ async function onFetchResponse(message) {
 }
 
 function init() {
-	const legacyInfobarElement = document.querySelector("singlefile-infobar");
+	const legacyInfobarElement = document.querySelector("InContext Capture-infobar");
 	if (legacyInfobarElement) {
 		legacyInfobarElement.remove();
 	}
-	if (previousLocationHref != location.href && !singlefile.pageInfo.processing) {
+	if (previousLocationHref != location.href && !InContext Capture.pageInfo.processing) {
 		pageAutoSaved = false;
 		previousLocationHref = location.href;
 		browser.runtime.sendMessage({ method: "tabs.init", savedPageDetected: detectSavedPage(document) }).catch(() => { });
@@ -204,7 +204,7 @@ async function initAutoSavePage(message) {
 }
 
 async function autoSavePage() {
-	const helper = singlefile.helper;
+	const helper = InContext Capture.helper;
 	if ((!autoSavingPage || autoSaveTimeout) && !pageAutoSaved) {
 		autoSavingPage = true;
 		if (optionsAutoSave.autoSaveDelay && !autoSaveTimeout) {
@@ -216,7 +216,7 @@ async function autoSavePage() {
 			let framesSessionId;
 			autoSaveTimeout = null;
 			if (!optionsAutoSave.removeFrames && globalThis.frames && globalThis.frames.length) {
-				frames = await singlefile.processors.frameTree.getAsync(optionsAutoSave);
+				frames = await InContext Capture.processors.frameTree.getAsync(optionsAutoSave);
 			}
 			framesSessionId = frames && frames.sessionId;
 			if (optionsAutoSave.userScriptEnabled && waitForUserScript) {
@@ -225,7 +225,7 @@ async function autoSavePage() {
 			const docData = helper.preProcessDoc(document, globalThis, optionsAutoSave);
 			savePage(docData, frames);
 			if (framesSessionId) {
-				singlefile.processors.frameTree.cleanup(framesSessionId);
+				InContext Capture.processors.frameTree.cleanup(framesSessionId);
 			}
 			helper.postProcessDoc(document, docData.markedElements, docData.invalidElements);
 			if (optionsAutoSave.userScriptEnabled && waitForUserScript) {
@@ -264,11 +264,11 @@ function onUnload() {
 }
 
 function autoSaveUnloadedPage({ autoSaveUnload, autoSaveDiscard, autoSaveRemove }) {
-	const helper = singlefile.helper;
+	const helper = InContext Capture.helper;
 	const waitForUserScript = globalThis[helper.WAIT_FOR_USERSCRIPT_PROPERTY_NAME];
 	let frames = [];
 	if (!optionsAutoSave.removeFrames && globalThis.frames && globalThis.frames.length) {
-		frames = singlefile.processors.frameTree.getSync(optionsAutoSave);
+		frames = InContext Capture.processors.frameTree.getSync(optionsAutoSave);
 	}
 	if (optionsAutoSave.userScriptEnabled && waitForUserScript) {
 		waitForUserScript(helper.ON_BEFORE_CAPTURE_EVENT_NAME);
@@ -278,9 +278,9 @@ function autoSaveUnloadedPage({ autoSaveUnload, autoSaveDiscard, autoSaveRemove 
 }
 
 function savePage(docData, frames, { autoSaveUnload, autoSaveDiscard, autoSaveRemove } = {}) {
-	const helper = singlefile.helper;
-	const updatedResources = singlefile.pageInfo.updatedResources;
-	const visitDate = singlefile.pageInfo.visitDate.getTime();
+	const helper = InContext Capture.helper;
+	const updatedResources = InContext Capture.pageInfo.updatedResources;
+	const visitDate = InContext Capture.pageInfo.visitDate.getTime();
 	Object.keys(updatedResources).forEach(url => updatedResources[url].retrieved = false);
 	browser.runtime.sendMessage({
 		method: "autosave.save",
@@ -315,7 +315,7 @@ async function openEditor(document) {
 		content = await getContent();
 	} else {
 		serializeShadowRoots(document);
-		content = singlefile.helper.serialize(document);
+		content = InContext Capture.helper.serialize(document);
 	}
 	for (let blockIndex = 0; blockIndex * MAX_CONTENT_SIZE < content.length; blockIndex++) {
 		const message = {
@@ -364,7 +364,7 @@ async function extractEmbeddedImage(content) {
 
 function detectSavedPage(document) {
 	if (savedPageDetected === undefined) {
-		const helper = singlefile.helper;
+		const helper = InContext Capture.helper;
 		const firstDocumentChild = document.documentElement.firstChild;
 		compressContent = document.documentElement.dataset && document.documentElement.dataset.sfz == "";
 		extractDataFromPageTags = Boolean(document.querySelector("sfz-extra-data"));
@@ -380,7 +380,7 @@ function detectSavedPage(document) {
 function serializeShadowRoots(node) {
 	const SHADOWROOT_ATTRIBUTE_NAME = "shadowrootmode";
 	node.querySelectorAll("*").forEach(element => {
-		const shadowRoot = singlefile.helper.getShadowRoot(element);
+		const shadowRoot = InContext Capture.helper.getShadowRoot(element);
 		if (shadowRoot) {
 			serializeShadowRoots(shadowRoot);
 			const templateElement = document.createElement("template");

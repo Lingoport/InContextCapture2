@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of SingleFile.
+ * This file is part of InContext Capture.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -27,7 +27,7 @@ const FETCH_SUPPORTED_REQUEST_EVENT = "single-file-request-fetch-supported";
 const FETCH_SUPPORTED_RESPONSE_EVENT = "single-file-response-fetch-supported";
 const FETCH_REQUEST_EVENT = "single-file-request-fetch";
 const FETCH_RESPONSE_EVENT = "single-file-response-fetch";
-const ERR_HOST_FETCH = "Host fetch error (SingleFile)";
+const ERR_HOST_FETCH = "Host fetch error (InContext Capture)";
 const USE_HOST_FETCH = Boolean(window.wrappedJSObject);
 
 const fetch = window.fetch.bind(window);
@@ -35,10 +35,10 @@ const fetch = window.fetch.bind(window);
 let requestId = 0, pendingResponses = new Map(), hostFetchSupported;
 
 browser.runtime.onMessage.addListener(message => {
-	if (message.method == "singlefile.fetchFrame" && window.frameId && window.frameId == message.frameId) {
+	if (message.method == "InContext Capture.fetchFrame" && window.frameId && window.frameId == message.frameId) {
 		return onFetchFrame(message);
 	}
-	if (message.method == "singlefile.fetchResponse") {
+	if (message.method == "InContext Capture.fetchResponse") {
 		return onFetchResponse(message);
 	}
 });
@@ -163,13 +163,13 @@ async function fetchResource(url, options = {}, useHostFetch = true) {
 	} catch (error) {
 		requestId++;
 		const promise = new Promise((resolve, reject) => pendingResponses.set(requestId, { resolve, reject }));
-		await sendMessage({ method: "singlefile.fetch", url, requestId, referrer: options.referrer, headers: options.headers });
+		await sendMessage({ method: "InContext Capture.fetch", url, requestId, referrer: options.referrer, headers: options.headers });
 		return promise;
 	}
 }
 
 async function frameFetch(url, options) {
-	const response = await sendMessage({ method: "singlefile.fetchFrame", url, frameId: options.frameId, referrer: options.referrer, headers: options.headers });
+	const response = await sendMessage({ method: "InContext Capture.fetchFrame", url, frameId: options.frameId, referrer: options.referrer, headers: options.headers });
 	return {
 		status: response.status,
 		headers: new Map(response.headers),

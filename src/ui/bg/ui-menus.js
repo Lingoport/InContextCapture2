@@ -1,23 +1,23 @@
 /*
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
- * 
- * This file is part of SingleFile.
  *
- *   The code in this file is free software: you can redistribute it and/or 
- *   modify it under the terms of the GNU Affero General Public License 
+ * This file is part of InContext Capture.
+ *
+ *   The code in this file is free software: you can redistribute it and/or
+ *   modify it under the terms of the GNU Affero General Public License
  *   (GNU AGPL) as published by the Free Software Foundation, either version 3
  *   of the License, or (at your option) any later version.
- * 
- *   The code in this file is distributed in the hope that it will be useful, 
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of 
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero 
+ *
+ *   The code in this file is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
  *   General Public License for more details.
  *
- *   As additional permission under GNU AGPL version 3 section 7, you may 
- *   distribute UNMODIFIED VERSIONS OF THIS file without the copy of the GNU 
- *   AGPL normally required by section 4, provided you include this license 
- *   notice and a URL through which recipients can access the Corresponding 
+ *   As additional permission under GNU AGPL version 3 section 7, you may
+ *   distribute UNMODIFIED VERSIONS OF THIS file without the copy of the GNU
+ *   AGPL normally required by section 4, provided you include this license
+ *   notice and a URL through which recipients can access the Corresponding
  *   Source.
  */
 
@@ -44,14 +44,9 @@ const MENU_ID_ASSOCIATE_WITH_PROFILE = "associate-with-profile";
 const MENU_ID_ASSOCIATE_WITH_PROFILE_PREFIX = "associate-with-profile-";
 const MENU_ID_SAVE_SELECTED = "save-selected";
 const MENU_ID_SAVE_FRAME = "save-frame";
-const MENU_ID_SAVE_TABS = "save-tabs";
 const MENU_ID_SAVE_SELECTED_TABS = "save-selected-tabs";
-const MENU_ID_SAVE_UNPINNED_TABS = "save-unpinned-tabs";
-const MENU_ID_SAVE_ALL_TABS = "save-all-tabs";
 const MENU_ID_BATCH_SAVE_URLS = "batch-save-urls";
 const MENU_ID_BUTTON_SAVE_SELECTED_TABS = "button-" + MENU_ID_SAVE_SELECTED_TABS;
-const MENU_ID_BUTTON_SAVE_UNPINNED_TABS = "button-" + MENU_ID_SAVE_UNPINNED_TABS;
-const MENU_ID_BUTTON_SAVE_ALL_TABS = "button-" + MENU_ID_SAVE_ALL_TABS;
 const MENU_ID_AUTO_SAVE = "auto-save";
 const MENU_ID_AUTO_SAVE_DISABLED = "auto-save-disabled";
 const MENU_ID_AUTO_SAVE_TAB = "auto-save-tab";
@@ -69,8 +64,6 @@ const MENU_SAVE_SELECTION_MESSAGE = browser.i18n.getMessage("menuSaveSelection")
 const MENU_SAVE_FRAME_MESSAGE = browser.i18n.getMessage("menuSaveFrame");
 const MENU_SAVE_TABS_MESSAGE = browser.i18n.getMessage("menuSaveTabs");
 const MENU_SAVE_SELECTED_TABS_MESSAGE = browser.i18n.getMessage("menuSaveSelectedTabs");
-const MENU_SAVE_UNPINNED_TABS_MESSAGE = browser.i18n.getMessage("menuSaveUnpinnedTabs");
-const MENU_SAVE_ALL_TABS_MESSAGE = browser.i18n.getMessage("menuSaveAllTabs");
 const MENU_BATCH_SAVE_URLS_MESSAGE = browser.i18n.getMessage("menuBatchSaveUrls");
 const MENU_SELECT_PROFILE_MESSAGE = browser.i18n.getMessage("menuSelectProfile");
 const PROFILE_DEFAULT_SETTINGS_MESSAGE = browser.i18n.getMessage("profileDefaultSettings");
@@ -116,6 +109,7 @@ function onMessage(message) {
 }
 
 async function createMenus(tab) {
+	console.log("createMenus() is called");
 	const [profiles, allTabsData] = await Promise.all([config.getProfiles(), tabsData.get()]);
 	let options = await config.getOptions(tab && tab.url);
 	if (BROWSER_MENUS_API_SUPPORTED && options) {
@@ -190,24 +184,7 @@ async function createMenus(tab) {
 			contexts: defaultContextsDisabled,
 			title: MENU_SAVE_TABS_MESSAGE
 		});
-		menus.create({
-			id: MENU_ID_BUTTON_SAVE_SELECTED_TABS,
-			contexts: defaultContextsDisabled,
-			title: MENU_SAVE_SELECTED_TABS_MESSAGE,
-			parentId: MENU_ID_SAVE_TABS
-		});
-		menus.create({
-			id: MENU_ID_BUTTON_SAVE_UNPINNED_TABS,
-			contexts: defaultContextsDisabled,
-			title: MENU_SAVE_UNPINNED_TABS_MESSAGE,
-			parentId: MENU_ID_SAVE_TABS
-		});
-		menus.create({
-			id: MENU_ID_BUTTON_SAVE_ALL_TABS,
-			contexts: defaultContextsDisabled,
-			title: MENU_SAVE_ALL_TABS_MESSAGE,
-			parentId: MENU_ID_SAVE_TABS
-		});
+
 		if (options.contextMenuEnabled) {
 			if (config.SELECTABLE_TABS_SUPPORTED) {
 				menus.create({
@@ -216,16 +193,6 @@ async function createMenus(tab) {
 					title: MENU_SAVE_SELECTED_TABS_MESSAGE
 				});
 			}
-			menus.create({
-				id: MENU_ID_SAVE_UNPINNED_TABS,
-				contexts: pageContextsEnabled,
-				title: MENU_SAVE_UNPINNED_TABS_MESSAGE
-			});
-			menus.create({
-				id: MENU_ID_SAVE_ALL_TABS,
-				contexts: pageContextsEnabled,
-				title: MENU_SAVE_ALL_TABS_MESSAGE
-			});
 			menus.create({
 				id: "separator-2",
 				contexts: pageContextsEnabled,
@@ -434,14 +401,6 @@ async function initialize() {
 			}
 			if (event.menuItemId == MENU_ID_SAVE_SELECTED_TABS || event.menuItemId == MENU_ID_BUTTON_SAVE_SELECTED_TABS) {
 				const tabs = await queryTabs({ currentWindow: true, highlighted: true });
-				business.saveTabs(tabs);
-			}
-			if (event.menuItemId == MENU_ID_SAVE_UNPINNED_TABS || event.menuItemId == MENU_ID_BUTTON_SAVE_UNPINNED_TABS) {
-				const tabs = await queryTabs({ currentWindow: true, pinned: false });
-				business.saveTabs(tabs);
-			}
-			if (event.menuItemId == MENU_ID_SAVE_ALL_TABS || event.menuItemId == MENU_ID_BUTTON_SAVE_ALL_TABS) {
-				const tabs = await queryTabs({ currentWindow: true });
 				business.saveTabs(tabs);
 			}
 			if (event.menuItemId == MENU_ID_BATCH_SAVE_URLS) {

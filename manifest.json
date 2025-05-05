@@ -1,7 +1,7 @@
 {
-	"name": "SingleFile",
+	"name": "InContext Capture",
 	"author": "Gildas Lormeau",
-	"homepage_url": "https://www.getsinglefile.com",
+	"homepage_url": "https://www.getInContext Capture.com",
 	"icons": {
 		"16": "src/ui/resources/icon_16.png",
 		"32": "src/ui/resources/icon_32.png",
@@ -44,7 +44,7 @@
 	},
 	"sidebar_action": {
 		"browser_style": true,
-		"default_title": "SingleFile",
+		"default_title": "InContext Capture",
 		"default_panel": "src/ui/pages/panel.html",
 		"default_icon": "src/ui/resources/icon_128.png",
 		"open_at_install": false
