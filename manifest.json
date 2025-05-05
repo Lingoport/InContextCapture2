@@ -95,7 +95,7 @@
 	],
 	"permissions": [
 		"identity",
-		"menus",
+		"contextMenus",
 		"downloads",
 		"storage",
 		"tabs",
