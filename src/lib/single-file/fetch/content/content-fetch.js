@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of SingleFile.
+ * This file is part of InContext Capture.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -27,7 +27,7 @@ const FETCH_SUPPORTED_REQUEST_EVENT = "single-file-request-fetch-supported";
 const FETCH_SUPPORTED_RESPONSE_EVENT = "single-file-response-fetch-supported";
 const FETCH_REQUEST_EVENT = "single-file-request-fetch";
 const FETCH_RESPONSE_EVENT = "single-file-response-fetch";
-const ERR_HOST_FETCH = "Host fetch error (SingleFile)";
+const ERR_HOST_FETCH = "Host fetch error (InContext Capture)";
 const USE_HOST_FETCH = Boolean(window.wrappedJSObject);
 
 const fetch = window.fetch.bind(window);

@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of SingleFile.
+ * This file is part of InContext Capture.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -348,7 +348,7 @@ addEventListener("message", async event => {
 	if (message.method == "onInit") {
 		tabData.options.disableFormatPage = !message.formatPageEnabled;
 		formatPageButton.hidden = !message.formatPageEnabled;
-		document.title = "[SingleFile] " + message.title;
+		document.title = "[InContext Capture] " + message.title;
 		if (message.filename) {
 			tabData.filename = message.filename;
 		}

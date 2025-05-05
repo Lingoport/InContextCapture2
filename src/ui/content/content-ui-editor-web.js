@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of SingleFile.
+ * This file is part of InContext Capture.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -65,8 +65,8 @@ import { downloadPageForeground } from "../../core/common/download.js";
 	const NOTE_INITIAL_HEIGHT = 150;
 	const NOTE_HEADER_HEIGHT = 25;
 	const DISABLED_NOSCRIPT_ATTRIBUTE_NAME = "data-single-file-disabled-noscript";
-	const COMMENT_HEADER = "Page saved with SingleFile";
-	const COMMENT_HEADER_LEGACY = "Archive processed by SingleFile";
+	const COMMENT_HEADER = "Page saved with InContext Capture";
+	const COMMENT_HEADER_LEGACY = "Archive processed by InContext Capture";
 
 	let NOTES_WEB_STYLESHEET, MASK_WEB_STYLESHEET, HIGHLIGHTS_WEB_STYLESHEET;
 	let selectedNote, anchorElement, maskNoteElement, maskPageElement, highlightSelectionMode, removeHighlightMode, resizingNoteMode, movingNoteMode, highlightColor, collapseNoteTimeout, cuttingOuterMode, cuttingMode, cuttingTouchTarget, cuttingPath, cuttingPathIndex, previousContent;
