@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -26,7 +26,7 @@
 const timeouts = new Map();
 
 browser.runtime.onMessage.addListener((message, sender) => {
-	if (message.method == "InContext Capture.lazyTimeout.setTimeout") {
+	if (message.method == "singlefile.lazyTimeout.setTimeout") {
 		let tabTimeouts = timeouts.get(sender.tab.id);
 		let frameTimeouts;
 		if (tabTimeouts) {
@@ -47,7 +47,7 @@ browser.runtime.onMessage.addListener((message, sender) => {
 				if (tabTimeouts && frameTimeouts) {
 					deleteTimeout(frameTimeouts, message.type);
 				}
-				await browser.tabs.sendMessage(sender.tab.id, { method: "InContext Capture.lazyTimeout.onTimeout", type: message.type });
+				await browser.tabs.sendMessage(sender.tab.id, { method: "singlefile.lazyTimeout.onTimeout", type: message.type });
 				// eslint-disable-next-line no-unused-vars
 			} catch (error) {
 				// ignored
@@ -62,7 +62,7 @@ browser.runtime.onMessage.addListener((message, sender) => {
 		frameTimeouts.set(message.type, timeoutId);
 		return Promise.resolve({});
 	}
-	if (message.method == "InContext Capture.lazyTimeout.clearTimeout") {
+	if (message.method == "singlefile.lazyTimeout.clearTimeout") {
 		let tabTimeouts = timeouts.get(sender.tab.id);
 		if (tabTimeouts) {
 			const frameTimeouts = tabTimeouts.get(sender.frameId);

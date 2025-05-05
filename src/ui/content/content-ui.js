@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -23,21 +23,21 @@
 
 /* global browser, document, prompt, getComputedStyle, addEventListener, removeEventListener, requestAnimationFrame, setTimeout, getSelection, Node */
 
-const InContext Capture = globalThis.InContext Capture;
+const singlefile = globalThis.singlefile;
 
-const SELECTED_CONTENT_ATTRIBUTE_NAME = InContext Capture.helper.SELECTED_CONTENT_ATTRIBUTE_NAME;
+const SELECTED_CONTENT_ATTRIBUTE_NAME = singlefile.helper.SELECTED_CONTENT_ATTRIBUTE_NAME;
 
-const MASK_TAGNAME = "InContext Capture-mask";
-const MASK_CONTENT_CLASSNAME = "InContext Capture-mask-content";
-const PROGRESSBAR_CLASSNAME = "InContext Capture-progress-bar";
-const PROGRESSBAR_CONTENT_CLASSNAME = "InContext Capture-progress-bar-content";
+const MASK_TAGNAME = "singlefile-mask";
+const MASK_CONTENT_CLASSNAME = "singlefile-mask-content";
+const PROGRESSBAR_CLASSNAME = "singlefile-progress-bar";
+const PROGRESSBAR_CONTENT_CLASSNAME = "singlefile-progress-bar-content";
 const SELECTION_ZONE_TAGNAME = "single-file-selection-zone";
-const LOGS_WINDOW_TAGNAME = "InContext Capture-logs-window";
-const LOGS_CLASSNAME = "InContext Capture-logs";
-const LOGS_LINE_CLASSNAME = "InContext Capture-logs-line";
-const LOGS_LINE_TEXT_ELEMENT_CLASSNAME = "InContext Capture-logs-line-text";
-const LOGS_LINE_STATUS_ELEMENT_CLASSNAME = "InContext Capture-logs-line-icon";
-const SINGLE_FILE_UI_ELEMENT_CLASS = InContext Capture.helper.SINGLE_FILE_UI_ELEMENT_CLASS;
+const LOGS_WINDOW_TAGNAME = "singlefile-logs-window";
+const LOGS_CLASSNAME = "singlefile-logs";
+const LOGS_LINE_CLASSNAME = "singlefile-logs-line";
+const LOGS_LINE_TEXT_ELEMENT_CLASSNAME = "singlefile-logs-line-text";
+const LOGS_LINE_STATUS_ELEMENT_CLASSNAME = "singlefile-logs-line-icon";
+const SINGLE_FILE_UI_ELEMENT_CLASS = singlefile.helper.SINGLE_FILE_UI_ELEMENT_CLASS;
 const SELECT_PX_THRESHOLD = 8;
 const CSS_PROPERTIES = new Set(Array.from(getComputedStyle(document.documentElement)));
 let LOG_PANEL_WIDTH, LOG_PANEL_DEFERRED_IMAGES_MESSAGE, LOG_PANEL_FRAME_CONTENTS_MESSAGE, LOG_PANEL_EMBEDDED_IMAGE_MESSAGE, LOG_PANEL_STEP_MESSAGE;

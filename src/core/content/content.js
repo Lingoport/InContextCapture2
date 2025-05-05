@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -29,8 +29,8 @@ import * as ui from "./../../ui/content/content-ui.js";
 import { onError, getOpenFileBar, openFile, setLabels } from "./../../ui/common/common-content-ui.js";
 import * as yabson from "./../../lib/yabson/yabson.js";
 
-const InContext Capture = globalThis.InContext Capture;
-const bootstrap = globalThis.InContext CaptureBootstrap;
+const singlefile = globalThis.singlefile;
+const bootstrap = globalThis.singlefileBootstrap;
 
 const MOZ_EXTENSION_PROTOCOL = "moz-extension:";
 const EMBEDDED_IMAGE_BUTTON_MESSAGE = browser.i18n.getMessage("topPanelEmbeddedImageButton");
@@ -47,8 +47,8 @@ setLabels({
 	ERROR_TITLE_MESSAGE
 });
 
-if (!bootstrap || !bootstrap.initializedInContext Capture) {
-	InContext Capture.init({ fetch, frameFetch });
+if (!bootstrap || !bootstrap.initializedSingleFile) {
+	singlefile.init({ fetch, frameFetch });
 	browser.runtime.onMessage.addListener(message => {
 		if (message.method == "content.save" ||
 			message.method == "content.cancelSave" ||
@@ -63,9 +63,9 @@ if (!bootstrap || !bootstrap.initializedInContext Capture) {
 		}
 	});
 	if (bootstrap) {
-		bootstrap.initializedInContext Capture = true;
+		bootstrap.initializedSingleFile = true;
 	} else {
-		globalThis.InContext CaptureBootstrap = { initializedInContext Capture: true };
+		globalThis.singlefileBootstrap = { initializedSingleFile: true };
 	}
 }
 
@@ -86,7 +86,7 @@ async function onMessage(message) {
 				browser.runtime.sendMessage({ method: "ui.processCancelled" });
 			}
 			if (message.options.loadDeferredImages) {
-				InContext Capture.processors.lazy.resetZoomLevel(message.options);
+				singlefile.processors.lazy.resetZoomLevel(message.options);
 			}
 			return {};
 		}
@@ -193,11 +193,11 @@ async function savePage(message) {
 }
 
 async function processPage(options) {
-	const frames = InContext Capture.processors.frameTree;
+	const frames = singlefile.processors.frameTree;
 	let framesSessionId;
-	InContext Capture.helper.initDoc(document);
+	singlefile.helper.initDoc(document);
 	ui.onStartPage(options);
-	processor = new InContext Capture.InContext Capture(options);
+	processor = new singlefile.SingleFile(options);
 	const preInitializationPromises = [];
 	options.insertCanonicalLink = true;
 	let index = 0, maxIndex = 0, initializing;
@@ -224,7 +224,7 @@ async function processPage(options) {
 			if (event.type == event.RESOURCES_INITIALIZED) {
 				maxIndex = event.detail.max;
 				if (options.loadDeferredImages) {
-					InContext Capture.processors.lazy.resetZoomLevel(options);
+					singlefile.processors.lazy.resetZoomLevel(options);
 				}
 			}
 			if (event.type == event.RESOURCES_INITIALIZED || event.type == event.RESOURCE_LOADED) {
@@ -264,7 +264,7 @@ async function processPage(options) {
 	if (!options.saveRawPage && !processor.cancelled) {
 		let lazyLoadPromise;
 		if (options.loadDeferredImages) {
-			lazyLoadPromise = InContext Capture.processors.lazy.process(options);
+			lazyLoadPromise = singlefile.processors.lazy.process(options);
 			ui.onLoadingDeferResources(options);
 			lazyLoadPromise.then(() => {
 				if (!processor.cancelled) {
@@ -353,7 +353,7 @@ async function processPage(options) {
 		}
 		ui.onEndPage();
 		if (options.displayStats) {
-			console.log("InContext Capture stats"); // eslint-disable-line no-console
+			console.log("SingleFile stats"); // eslint-disable-line no-console
 			console.table(page.stats); // eslint-disable-line no-console
 		}
 	}

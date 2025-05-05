@@ -12,8 +12,8 @@
 		"description": "Command (Ctrl+Shift+U): 'Save all tabs'"
 	},
 	"menuSavePage": {
-		"message": "使用 InContext Capture 保存頁面",
-		"description": "Menu entry: 'Save page with InContext Capture'"
+		"message": "使用 SingleFile 保存頁面",
+		"description": "Menu entry: 'Save page with SingleFile'"
 	},
 	"menuSaveSelectedLinks": {
 		"message": "保存所選鏈接",
@@ -57,7 +57,7 @@
 	},
 	"menuSaveTabs": {
 		"message": "保存標籤頁",
-		"description": "Menu entry (InContext Capture button only): 'Save tabs'"
+		"description": "Menu entry (SingleFile button only): 'Save tabs'"
 	},
 	"menuSaveSelectedTabs": {
 		"message": "保存選中標籤頁",
@@ -96,20 +96,20 @@
 		"description": "Menu entry: 'Auto-save' > Auto-save all tabs'"
 	},
 	"buttonDefaultTooltip": {
-		"message": "使用 InContext Capture 保存頁面",
-		"description": "Button title: 'Save page with InContext Capture'"
+		"message": "使用 SingleFile 保存頁面",
+		"description": "Button title: 'Save page with SingleFile'"
 	},
 	"buttonBlockedBadge": {
 		"message": "🚫",
 		"description": "Button badge when the page is blocked: '🚫'"
 	},
 	"buttonBlockedTooltip": {
-		"message": "InContext Capture 無法保存此頁面",
-		"description": "Button title: 'This page cannot be saved with InContext Capture'"
+		"message": "SingleFile 無法保存此頁面",
+		"description": "Button title: 'This page cannot be saved with SingleFile'"
 	},
 	"buttonInitializingTooltip": {
-		"message": "正在初始化 InContext Capture",
-		"description": "Button title during initialization: 'Initializing InContext Capture (x/2)'"
+		"message": "正在初始化 SingleFile",
+		"description": "Button title during initialization: 'Initializing SingleFile (x/2)'"
 	},
 	"buttonInitializingBadge": {
 		"message": "•••",
@@ -148,7 +148,7 @@
 		"description": "Options sub-title: 'User interface'"
 	},
 	"optionAddMenuEntry": {
-		"message": "在頁面的上下文菜單中添加 InContext Capture 條目",
+		"message": "在頁面的上下文菜單中添加 SingleFile 條目",
 		"description": "Options page label: 'add entry in the context menu of the webpage'"
 	},
 	"optionDisplayShadow": {
@@ -532,8 +532,8 @@
 		"description": "Options page label: 'period (s)'"
 	},
 	"optionAutoSaveExternalSave": {
-		"message": "使用 InContext Capture Companion 保存頁面",
-		"description": "Options page label: 'save the page with InContext Capture Companion'"
+		"message": "使用 SingleFile Companion 保存頁面",
+		"description": "Options page label: 'save the page with SingleFile Companion'"
 	},
 	"optionsEditorSubTitle": {
 		"message": "標註編輯器",
@@ -548,8 +548,8 @@
 		"description": "Options page label: 'open saved pages in a new tab'"
 	},
 	"optionAutoOpenEditor": {
-		"message": "在標註編輯器中打開用 InContext Capture 保存的頁面",
-		"description": "Options page label: 'open pages saved with InContext Capture in the annotation editor'"
+		"message": "在標註編輯器中打開用 SingleFile 保存的頁面",
+		"description": "Options page label: 'open pages saved with SingleFile in the annotation editor'"
 	},
 	"optionDefaultEditorMode": {
 		"message": "默認模式",
@@ -648,7 +648,7 @@
 		"description": "Options page label: 'add proof of existence'"
 	},
 	"optionsAddProofConfirm": {
-		"message": "請確認您是否允許 InContext Capture 將您要保存的每個頁面的 SHA256 哈希值發送給 Woleet API 。您可以在幫助頁面或者通過點擊該選項旁的問號找到此功能的更多信息。",
+		"message": "請確認您是否允許 SingleFile 將您要保存的每個頁面的 SHA256 哈希值發送給 Woleet API 。您可以在幫助頁面或者通過點擊該選項旁的問號找到此功能的更多信息。",
 		"description": "Popup text displayed wen enabling the option 'add proof of existence'"
 	},
 	"optionWoleetKey": {
@@ -724,8 +724,8 @@
 		"description": "Options page label: 'password'"
 	},
 	"optionSaveWithCompanion": {
-		"message": "使用 InContext Capture Companion 保存",
-		"description": "Options page label: 'save with InContext Capture Companion'"
+		"message": "使用 SingleFile Companion 保存",
+		"description": "Options page label: 'save with SingleFile Companion'"
 	},
 	"optionSaveCreatedBookmarks": {
 		"message": "創建新書籤時保存其對應頁面",
@@ -808,8 +808,8 @@
 		"description": "Width of the log panel in pixels, it should be adjusted for the longest label beginning with 'log' (e.g. 'logPanelDeferredImages')"
 	},
 	"topPanelError": {
-		"message": "InContext Capture 錯誤：",
-		"description": "Label 'InContext Capture error: ' in the top panel when displaying an error message"
+		"message": "SingleFile 錯誤：",
+		"description": "Label 'SingleFile error: ' in the top panel when displaying an error message"
 	},
 	"topPanelEmbeddedImageButton": {
 		"message": "打開圖片...",

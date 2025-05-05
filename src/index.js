@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -34,5 +34,5 @@ function injectScript(tabId, options) {
 }
 
 function getPageData(options, initOptions = { fetch, frameFetch }, doc, win) {
-	return globalThis.InContext Capture.getPageData(options, initOptions, doc, win);
+	return globalThis.singlefile.getPageData(options, initOptions, doc, win);
 }

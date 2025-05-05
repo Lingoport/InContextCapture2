@@ -1,13 +1,13 @@
-# InContext Capture
+# SingleFile
 
-InContext Capture helps you to save a complete web page into a single HTML
-file. InContext Capture is a Web Extension (and a CLI tool) compatible with Chrome, Firefox
+SingleFile helps you to save a complete web page into a single HTML
+file. SingleFile is a Web Extension (and a CLI tool) compatible with Chrome, Firefox
 (Desktop and Mobile), Microsoft Edge, Safari, Vivaldi, Brave, Waterfox, Yandex
 browser, and Opera.
 
 ## Table of Contents
 
-- [InContext Capture](#InContext Capture)
+- [SingleFile](#singlefile)
   - [Table of Contents](#table-of-contents)
   - [Demo](#demo)
   - [Install](#install)
@@ -16,10 +16,10 @@ browser, and Opera.
   - [FAQ](#faq)
   - [Release notes](#release-notes)
   - [Known Issues and Troubleshooting](#known-issues-and-troubleshooting)
-  - [Command Line Interface (InContext Capture CLI)](#command-line-interface-InContext Capture-cli)
+  - [Command Line Interface (SingleFile CLI)](#command-line-interface-singlefile-cli)
   - [Integration with user scripts](#integration-with-user-scripts)
   - [File format comparison](#file-format-comparison)
-  - [Projects using/compatible with InContext Capture](#projects-usingcompatible-with-InContext Capture)
+  - [Projects using/compatible with SingleFile](#projects-usingcompatible-with-singlefile)
   - [Privacy Policy](#privacy-policy)
   - [Contributors](#contributors)
   - [Code derived from third party projects](#code-derived-from-third-party-projects)
@@ -32,34 +32,34 @@ https://user-images.githubusercontent.com/396787/156664907-cc458e35-f41b-45ca-91
 
 ## Install
 
-InContext Capture can be installed from the store of:
+SingleFile can be installed from the store of:
 
 - Firefox: https://addons.mozilla.org/firefox/addon/single-file
 - Firefox for Android:
   https://addons.mozilla.org/android/addon/single-file
 - Chrome:
   https://chrome.google.com/extensions/detail/mpiodijhokgodhhofbcjdecpffjipkle
-- Safari (macOS and iOS): https://apps.apple.com/us/app/InContext Capture-for-safari/id6444322545
+- Safari (macOS and iOS): https://apps.apple.com/us/app/singlefile-for-safari/id6444322545
 - Microsoft Edge:
   https://microsoftedge.microsoft.com/addons/detail/efnbkdcfmcmnhlkaijjjmhjjgladedno
 
 You can also download the zip file
-(https://github.com/gildas-lormeau/InContext Capture/archive/master.zip) of the project
+(https://github.com/gildas-lormeau/SingleFile/archive/master.zip) of the project
 and install it manually by unzipping it somewhere on your disk and following
 these instructions:
 
 - Firefox: https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox
-- Chrome and Microsoft Edge: https://github.com/gildas-lormeau/InContext Capture-MV3
-- Safari: https://github.com/gildas-lormeau/InContext Capture-Safari-Extension
+- Chrome and Microsoft Edge: https://github.com/gildas-lormeau/SingleFile-MV3
+- Safari: https://github.com/gildas-lormeau/SingleFile-Safari-Extension
   
 ## Getting started
 
-- Click on the InContext Capture button in the extension toolbar to save the page.
+- Click on the SingleFile button in the extension toolbar to save the page.
 - You can click again on the button to cancel the action when processing a page.
 
 ## Additional notes
 
-- Open the context menu by right-clicking the InContext Capture button in the extension
+- Open the context menu by right-clicking the SingleFile button in the extension
   toolbar or on the webpage. It allows you to save:
   - the current tab,
   - the selected content,
@@ -78,7 +78,7 @@ these instructions:
   - all the tabs.
 - With auto-save active, pages are automatically saved every time after being
   loaded (or before being unloaded if not).
-- Right-click on the InContext Capture button and select "Manage extension" (Firefox) /
+- Right-click on the SingleFile button and select "Manage extension" (Firefox) /
   "Options" (Chrome) to open the options page.
 - Enable the option "Destination > save to Google Drive" or "Destination >
   upload to GitHub" to upload pages to Google Drive or GitHub respectively.
@@ -95,7 +95,7 @@ these instructions:
 
 ## FAQ
 
-See https://github.com/gildas-lormeau/InContext Capture/blob/master/faq.md
+See https://github.com/gildas-lormeau/SingleFile/blob/master/faq.md
 
 ## Release notes
 
@@ -103,18 +103,18 @@ See https://addons.mozilla.org/firefox/addon/single-file/versions/
 
 ## Known Issues and Troubleshooting
 
-See https://github.com/gildas-lormeau/InContext Capture/blob/master/known-issues.md
+See https://github.com/gildas-lormeau/SingleFile/blob/master/known-issues.md
 
-## Command Line Interface (InContext Capture CLI)
+## Command Line Interface (SingleFile CLI)
 
 You can save web pages to HTML from the command line interface. See here for
 more info: https://github.com/gildas-lormeau/single-file-cli.
 
 ## Integration with user scripts
 
-You can execute a user script just before (and after) InContext Capture saves a page.
+You can execute a user script just before (and after) SingleFile saves a page.
 For more info, see
-https://github.com/gildas-lormeau/InContext Capture/wiki/How-to-execute-a-user-script-before-a-page-is-saved.
+https://github.com/gildas-lormeau/SingleFile/wiki/How-to-execute-a-user-script-before-a-page-is-saved.
 
 ## File format comparison
 
@@ -140,7 +140,7 @@ Footnotes:
 
 ⁴ An option must be enabled in the extension
 
-## Projects using/compatible with InContext Capture
+## Projects using/compatible with SingleFile
 
 - ArchiveBox - Open-source self-hosted web archiving:
   https://github.com/ArchiveBox/ArchiveBox
@@ -156,20 +156,20 @@ Footnotes:
 - obsidian-html-plugin - Plugin for reading HTML pages in Obsidian:
   https://github.com/nuthrash/obsidian-html-plugin
 - Org-Dex.el - Emacs package designed to enhance Org-mode by integrating 
-  InContext Capture CLI: https://github.com/nitincodery/org-dex.el
+  SingleFile CLI: https://github.com/nitincodery/org-dex.el
 - Petal Cite Web Importer - Browser extension to save PDFs and capture web pages
   in Petal Cite: https://github.com/ks-collab/cite-extension
 - Pocket Search Engine - Semantic search app for Android that works entirely 
   offline: https://play.google.com/store/apps/details?id=com.pocketsearchengine.app
-- InContext Capture2trilium - Tool to save faithful copy of a web page as a Trilium
-  note with InContext Capture: https://github.com/nil0x42/InContext Capture2trilium
-- InContext CaptureMac - Integration of InContext Capture in a swift application using
-  webkit: https://github.com/david-littlefield/InContext CaptureMac
-- Trilium-InContext Capture - An addon for Trilium Notes to easily import InContext Capture 
-  html pages: https://github.com/rauenzi/Trilium-InContext Capture
-- Trilium Simple InContext Capture Renderer - A plugin to add a new Template note to
-  Trilium for render file created by InContext Capture:
-  https://github.com/xnohat/trilium-simple-InContext Capture-renderer
+- singlefile2trilium - Tool to save faithful copy of a web page as a Trilium
+  note with SingleFile: https://github.com/nil0x42/singlefile2trilium
+- SingleFileMac - Integration of SingleFile in a swift application using
+  webkit: https://github.com/david-littlefield/SingleFileMac
+- Trilium-SingleFile - An addon for Trilium Notes to easily import SingleFile 
+  html pages: https://github.com/rauenzi/Trilium-SingleFile
+- Trilium Simple SingleFile Renderer - A plugin to add a new Template note to
+  Trilium for render file created by SingleFile:
+  https://github.com/xnohat/trilium-simple-singlefile-renderer
 - web document - Browser extension for saving web documents locally, allowing
   you to access them offline and quickly search for webpage:
   https://github.com/wvit/web-document
@@ -179,11 +179,11 @@ Footnotes:
 
 ## Privacy Policy
 
-See https://github.com/gildas-lormeau/InContext Capture/blob/master/privacy.md
+See https://github.com/gildas-lormeau/SingleFile/blob/master/privacy.md
 
 ## Contributors
 
-See https://github.com/gildas-lormeau/InContext Capture/blob/master/contributors.md
+See https://github.com/gildas-lormeau/SingleFile/blob/master/contributors.md
 
 ## Code derived from third party projects
 
@@ -205,9 +205,9 @@ See https://github.com/gildas-lormeau/InContext Capture/blob/master/contributors
 
 ## License
 
-InContext Capture is licensed under AGPL. Code derived from third-party projects is
+SingleFile is licensed under AGPL. Code derived from third-party projects is
 licensed under MIT. Please contact me at gildas.lormeau &lt;at&gt; gmail.com if
-you are interested in licensing the InContext Capture code for a commercial service or
+you are interested in licensing the SingleFile code for a commercial service or
 product.
 
 Suggestions are welcome :)

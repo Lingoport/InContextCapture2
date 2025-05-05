@@ -1,8 +1,8 @@
 /*
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
- *
- * This file is part of InContext Capture.
+ * 
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or
  *   modify it under the terms of the GNU Affero General Public License
@@ -121,7 +121,7 @@ const DEFAULT_CONFIG = {
 	saveToS3: false,
 	githubToken: "",
 	githubUser: "",
-	githubRepository: "InContext Capture-Archives",
+	githubRepository: "SingleFile-Archives",
 	githubBranch: "main",
 	saveWithCompanion: false,
 	sharePage: false,
@@ -687,7 +687,7 @@ async function resetProfile(profileName) {
 async function exportConfig() {
 	const config = await getConfig();
 	const textContent = JSON.stringify({ profiles: config.profiles, rules: config.rules, maxParallelWorkers: config.maxParallelWorkers, processInForeground: config.processInForeground }, null, 2);
-	const filename = `InContextCapture-settings-${(new Date()).toISOString().replace(/:/g, "_")}.json`;
+	const filename = `singlefile-settings-${(new Date()).toISOString().replace(/:/g, "_")}.json`;
 	if (BACKGROUND_SAVE_SUPPORTED) {
 		const url = URL.createObjectURL(new Blob([textContent], { type: "text/json" }));
 		try {

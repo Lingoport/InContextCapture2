@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -21,7 +21,7 @@
  *   Source.
  */
 
-/* global browser, InContext Capture, URL, fetch, document, Blob */
+/* global browser, singlefile, URL, fetch, document, Blob */
 
 import * as config from "./config.js";
 import * as bookmarks from "./bookmarks.js";
@@ -294,7 +294,7 @@ async function downloadCompressedContent(message, tab) {
 		} else {
 			const pageData = message.pageData;
 			const prompt = filename => promptFilename(tabId, filename);
-			const blob = await InContext Capture.processors.compression.process(pageData, {
+			const blob = await singlefile.processors.compression.process(pageData, {
 				insertTextBody: message.insertTextBody,
 				url: pageData.url || tab.url,
 				createRootDirectory: message.createRootDirectory,

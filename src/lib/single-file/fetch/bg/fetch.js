@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -34,7 +34,7 @@ export {
 };
 
 browser.runtime.onMessage.addListener((message, sender) => {
-	if (message.method && message.method.startsWith("InContext Capture.fetch")) {
+	if (message.method && message.method.startsWith("singlefile.fetch")) {
 		return new Promise(resolve => {
 			onRequest(message, sender)
 				.then(resolve)
@@ -44,14 +44,14 @@ browser.runtime.onMessage.addListener((message, sender) => {
 });
 
 async function onRequest(message, sender) {
-	if (message.method == "InContext Capture.fetch") {
+	if (message.method == "singlefile.fetch") {
 		try {
 			const response = await fetchResource(message.url, { referrer: message.referrer, headers: message.headers });
 			return sendResponse(sender.tab.id, message.requestId, response);
 		} catch (error) {
 			return sendResponse(sender.tab.id, message.requestId, { error: error.message, array: [] });
 		}
-	} else if (message.method == "InContext Capture.fetchFrame") {
+	} else if (message.method == "singlefile.fetchFrame") {
 		return browser.tabs.sendMessage(sender.tab.id, message);
 	}
 }
@@ -59,7 +59,7 @@ async function onRequest(message, sender) {
 async function sendResponse(tabId, requestId, response) {
 	for (let blockIndex = 0; blockIndex * MAX_CONTENT_SIZE <= response.array.length; blockIndex++) {
 		const message = {
-			method: "InContext Capture.fetchResponse",
+			method: "singlefile.fetchResponse",
 			requestId,
 			headers: response.headers,
 			status: response.status,

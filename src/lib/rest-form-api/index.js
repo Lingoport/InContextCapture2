@@ -4,7 +4,7 @@
  * author: gildas.lormeau <at> gmail.com
  * author: dcardin2007 <at> gmail.com
  *
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or
  *   modify it under the terms of the GNU Affero General Public License

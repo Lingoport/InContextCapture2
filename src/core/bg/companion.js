@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -42,7 +42,7 @@ async function externalSave(pageData) {
 	pageData.autoSaveExternalSave = false;
 	let response;
 	try {
-		response = await browser.runtime.sendNativeMessage("InContext Capture_companion", {
+		response = await browser.runtime.sendNativeMessage("singlefile_companion", {
 			method: "externalSave",
 			pageData
 		});
@@ -59,7 +59,7 @@ async function externalSave(pageData) {
 async function save(pageData) {
 	let response;
 	try {
-		response = await browser.runtime.sendNativeMessage("InContext Capture_companion", {
+		response = await browser.runtime.sendNativeMessage("singlefile_companion", {
 			method: "save",
 			pageData
 		});

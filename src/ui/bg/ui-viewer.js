@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -21,7 +21,7 @@
  *   Source.
  */
 
-/* global document, location, InContext Capture, fetch, URLSearchParams, prompt */
+/* global document, location, singlefile, fetch, URLSearchParams, prompt */
 
 import * as zip from "../../../lib/single-file-zip.js";
 
@@ -34,8 +34,8 @@ globalThis.onload = async () => {
 		const response = await fetch(blobURI);
 		if (compressed) {
 			const blob = await response.blob();
-			const { docContent } = await InContext Capture.helper.extract(blob, { prompt });
-			await InContext Capture.helper.display(document, docContent);
+			const { docContent } = await singlefile.helper.extract(blob, { prompt });
+			await singlefile.helper.display(document, docContent);
 		} else {
 			const text = await response.text();
 			document.write(text);

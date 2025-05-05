@@ -2,7 +2,7 @@
  * Copyright 2010-2020 Gildas Lormeau
  * contact : gildas.lormeau <at> gmail.com
  * 
- * This file is part of InContext Capture.
+ * This file is part of SingleFile.
  *
  *   The code in this file is free software: you can redistribute it and/or 
  *   modify it under the terms of the GNU Affero General Public License 
@@ -24,7 +24,7 @@
 /* global browser */
 
 browser.runtime.onMessage.addListener((message, sender) => {
-	if (message.method == "InContext Capture.frameTree.initResponse" || message.method == "InContext Capture.frameTree.ackInitRequest") {
+	if (message.method == "singlefile.frameTree.initResponse" || message.method == "singlefile.frameTree.ackInitRequest") {
 		browser.tabs.sendMessage(sender.tab.id, message, { frameId: 0 });
 		return Promise.resolve({});
 	}
