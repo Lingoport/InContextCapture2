@@ -13,7 +13,7 @@
 	},
 	"menuSavePage": {
 		"message": "Guardar página con InContext Capture",
-		"description": "Menu entry: 'Save page with InContext Capture'"
+		"description": "Menu entry: 'Capture page to Lingoport InContext'"
 	},
 	"menuSaveSelectedLinks": {
 		"message": "Guardar los links seleccionados",
@@ -97,7 +97,7 @@
 	},
 	"buttonDefaultTooltip": {
 		"message": "Guardar página con InContext Capture",
-		"description": "Button title: 'Save page with InContext Capture'"
+		"description": "Button title: 'Capture page to Lingoport InContext'"
 	},
 	"buttonBlockedBadge": {
 		"message": "🚫",

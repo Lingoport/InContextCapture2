@@ -13,7 +13,7 @@
 	},
 	"menuSavePage": {
 		"message": "Зберегти сторінку з допомогою InContext Capture",
-		"description": "Menu entry: 'Save page with InContext Capture'"
+		"description": "Menu entry: 'Capture page to Lingoport InContext'"
 	},
 	"menuSaveSelectedLinks": {
 		"message": "Зберегти вибрані посилання",
@@ -97,7 +97,7 @@
 	},
 	"buttonDefaultTooltip": {
 		"message": "Зберегти сторінку з допомогою InContext Capture",
-		"description": "Button title: 'Save page with InContext Capture'"
+		"description": "Button title: 'Capture page to Lingoport InContext'"
 	},
 	"buttonBlockedBadge": {
 		"message": "🚫",

@@ -12,8 +12,8 @@
 		"description": "Command (Ctrl+Shift+U): 'Save all tabs'"
 	},
 	"menuSavePage": {
-		"message": "Save page with InContext Capture",
-		"description": "Menu entry: 'Save page with InContext Capture'"
+		"message": "Capture page to Lingoport InContext",
+		"description": "Menu entry: 'Capture page to Lingoport InContext'"
 	},
 	"menuSaveSelectedLinks": {
 		"message": "Save selected links",
@@ -96,8 +96,8 @@
 		"description": "Menu entry: 'Auto-save' > Auto-save all tabs'"
 	},
 	"buttonDefaultTooltip": {
-		"message": "Save page with InContext Capture",
-		"description": "Button title: 'Save page with InContext Capture'"
+		"message": "Capture page to Lingoport InContext",
+		"description": "Button title: 'Capture page to Lingoport InContext'"
 	},
 	"buttonBlockedBadge": {
 		"message": "🚫",
