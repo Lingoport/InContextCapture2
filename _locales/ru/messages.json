@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "Просмотр отложенных сохранений...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "Выберите профиль по умолчанию",

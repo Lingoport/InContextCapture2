@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "Bekijk lopende opslagen...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "Selecteer het standaardprofiel",

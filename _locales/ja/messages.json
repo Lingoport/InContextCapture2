@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "保留中の保存を表示...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "規定（default）のプロファイルを選択",

@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "Anzeigen der aktuellen Speichern...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "Wählen Sie das Standardprofil aus",

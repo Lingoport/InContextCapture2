@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "查看挂起的保存项...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "选择默认配置文件",

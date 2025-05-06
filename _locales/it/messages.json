@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "Mostra salvataggi in attesa...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "Seleziona il profilo predefinito",

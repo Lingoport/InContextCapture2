@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "Перегляд відкладених збережень...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "Виберіть профіль за замовчуванням ",

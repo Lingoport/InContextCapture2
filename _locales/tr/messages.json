@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "Bekleyen kaydetmeleri görüntüle...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "Varsayılan profili seçin",

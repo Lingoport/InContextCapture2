@@ -33,7 +33,7 @@
 	},
 	"menuViewPendingSaves": {
 		"message": "Ver conteúdo pendente...",
-		"description": "Menu entry: 'View pending saves...'"
+		"description": "Menu entry: 'View pending capture...'"
 	},
 	"menuSelectProfile": {
 		"message": "Selecione perfil padrão",
