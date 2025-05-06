@@ -1,5 +1,5 @@
 {
-	"name": "InContext Capture",
+	"name": "lingoport InContext Capture",
 	"author": "Gildas Lormeau, Lingoport",
 	"homepage_url": "https://lingoport.com/",
 	"icons": {
@@ -44,7 +44,7 @@
 	},
 	"sidebar_action": {
 		"browser_style": true,
-		"default_title": "InContext Capture",
+		"default_title": "Lingoport InContext Capture",
 		"default_panel": "src/ui/pages/panel.html",
 		"default_icon": "src/ui/resources/icon_128.png",
 		"open_at_install": false
