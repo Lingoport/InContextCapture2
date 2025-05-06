@@ -49,7 +49,7 @@
 	},
 	"menuSaveSelection": {
 		"message": "Spara valet",
-		"description": "Menu entry: 'Save selection'"
+		"description": "Menu entry: 'Capture selection to Lingoport InContext'"
 	},
 	"menuSaveFrame": {
 		"message": "Spara ram",

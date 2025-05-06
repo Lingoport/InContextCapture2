@@ -48,8 +48,8 @@
 		"description": "Menu entry: 'Select the profile of the current domain'"
 	},
 	"menuSaveSelection": {
-		"message": "Save selection",
-		"description": "Menu entry: 'Save selection'"
+		"message": "Capture selection to Lingoport InContext",
+		"description": "Menu entry: 'Capture selection to Lingoport InContext'"
 	},
 	"menuSaveFrame": {
 		"message": "Save frame",

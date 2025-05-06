@@ -49,7 +49,7 @@
 	},
 	"menuSaveSelection": {
 		"message": "Seçimi yaddaşa qeyd et",
-		"description": "Menu entry: 'Save selection'"
+		"description": "Menu entry: 'Capture selection to Lingoport InContext'"
 	},
 	"menuSaveFrame": {
 		"message": "Frame-i yaddaşa qeyd et",

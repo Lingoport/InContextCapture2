@@ -49,7 +49,7 @@
 	},
 	"menuSaveSelection": {
 		"message": "Zapisz wybór",
-		"description": "Menu entry: 'Save selection'"
+		"description": "Menu entry: 'Capture selection to Lingoport InContext'"
 	},
 	"menuSaveFrame": {
 		"message": "Zapisz ramkę",
