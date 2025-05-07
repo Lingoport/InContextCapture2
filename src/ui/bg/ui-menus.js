@@ -80,7 +80,6 @@ const MENU_AUTOSAVE_TAB_MESSAGE = browser.i18n.getMessage("menuAutoSaveTab");
 const MENU_AUTOSAVE_UNPINNED_TABS_MESSAGE = browser.i18n.getMessage("menuAutoSaveUnpinnedTabs");
 const MENU_AUTOSAVE_ALL_TABS_MESSAGE = browser.i18n.getMessage("menuAutoSaveAllTabs");
 const MENU_TOP_VISIBLE_ENTRIES = [
-	MENU_ID_EDIT_AND_SAVE_PAGE,
 	MENU_ID_SAVE_SELECTED_LINKS,
 	MENU_ID_SAVE_SELECTED,
 	MENU_ID_SAVE_FRAME,
@@ -176,18 +175,6 @@ async function initialize() {
 					business.saveUrls([event.linkUrl]);
 				} else {
 					business.saveTabs([tab]);
-				}
-			}
-			if (event.menuItemId == MENU_ID_EDIT_AND_SAVE_PAGE) {
-				const allTabsData = await tabsData.get(tab.id);
-				if (allTabsData[tab.id].savedPageDetected) {
-					business.openEditor(tab);
-				} else {
-					if (event.linkUrl) {
-						business.saveUrls([event.linkUrl], { openEditor: true });
-					} else {
-						business.saveTabs([tab], { openEditor: true });
-					}
 				}
 			}
 			if (event.menuItemId == MENU_ID_SAVE_SELECTED_LINKS) {
@@ -328,11 +315,10 @@ async function refreshTab(tab) {
 			if (tab && tab.url) {
 				const options = await config.getOptions(tab.url);
 				promises.push(updateVisibleValue(tab, options.contextMenuEnabled));
-				promises.push(updateTitleValue(MENU_ID_EDIT_AND_SAVE_PAGE, allTabsData[tab.id].savedPageDetected ? MENU_EDIT_PAGE_MESSAGE : MENU_EDIT_AND_SAVE_PAGE_MESSAGE));
+
 				if (config.SELECTABLE_TABS_SUPPORTED) {
 					promises.push(menus.update(MENU_ID_SAVE_SELECTED, { visible: !options.saveRawPage }));
 				}
-				promises.push(menus.update(MENU_ID_EDIT_AND_SAVE_PAGE, { visible: !options.openEditor || allTabsData[tab.id].savedPageDetected }));
 				let selectedEntryId = MENU_ID_ASSOCIATE_WITH_PROFILE_PREFIX + "default";
 				let title = MENU_CREATE_DOMAIN_RULE_MESSAGE;
 				const [profiles, rule] = await Promise.all([config.getProfiles(), config.getRule(tab.url)]);
