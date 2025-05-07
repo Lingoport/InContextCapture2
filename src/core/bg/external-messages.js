@@ -42,10 +42,6 @@ async function onMessage(message, sender) {
 		const tabs = await browser.tabs.query({ currentWindow: true, active: true });
 		tabs.length = 1;
 		await business.saveTabs(tabs);
-	} else if (message == ACTION_EDIT_AND_SAVE_PAGE) {
-		const tabs = await browser.tabs.query({ currentWindow: true, active: true });
-		tabs.length = 1;
-		await business.saveTabs(tabs, { openEditor: true });
 	} else if (message == ACTION_SAVE_SELECTED_LINKS) {
 		const tabs = await browser.tabs.query({ currentWindow: true, active: true });
 		await business.saveSelectedLinks(tabs[0]);
