@@ -2,44 +2,40 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>InContext Capture options</title>
-	<link rel="stylesheet" href="options.css">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="color-scheme" content="light dark">
-	<link rel="icon" href="/src/ui/resources/icon_128.png">
+  <meta charset="utf-8">
+  <title>InContext Capture options</title>
+  <link rel="stylesheet" href="options.minimized.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
 <body>
-	<main>
-		<h3>
-			<span id="Option"></span>
-		</h3>
-		<details>
-			<summary id="destinationLabel"></summary>
-			<div class="option">
-				<label for="saveToRestFormApiInput" id="saveToRestFormApiLabel"></label>
-				<input type="radio" id="saveToRestFormApiInput" name="destinationInput">
-			</div>
-			<div class="option second-level">
-				<label for="saveToRestFormApiUrlInput" id="saveToRestFormApiUrlLabel"></label>
-				<input type="text" id="saveToRestFormApiUrlInput" class="medium-input">
-			</div>
-			<div class="option second-level">
-				<label for="saveToRestFormApiTokenInput" id="saveToRestFormApiTokenLabel"></label>
-				<input type="password" id="saveToRestFormApiTokenInput" class="medium-input">
-			</div>
-			<div class="option second-level">
-				<label for="saveToRestFormApiFileFieldNameInput" id="saveToRestFormApiFileFieldNameLabel"></label>
-				<input type="text" id="saveToRestFormApiFileFieldNameInput" class="medium-input">
-			</div>
-			<div class="option second-level">
-				<label for="saveToRestFormApiUrlFieldNameInput" id="saveToRestFormApiUrlFieldNameLabel"></label>
-				<input type="text" id="saveToRestFormApiUrlFieldNameInput" class="medium-input">
-			</div>
-		</details>
-	</main>
-	<script src="/lib/chrome-browser-polyfill.js"></script>
+  <main>
+    <h3>InContext Capture Options</h3>
+    <details open>
+      <summary>Destination Settings</summary>
+      <div class="option">
+        <label for="saveToRestFormApiInput">Use Rest API</label>
+        <input type="radio" id="saveToRestFormApiInput" name="destinationInput">
+      </div>
+      <div class="option second-level">
+        <label for="saveToRestFormApiUrlInput">API URL</label>
+        <input type="text" id="saveToRestFormApiUrlInput" class="medium-input">
+      </div>
+      <div class="option second-level">
+        <label for="saveToRestFormApiTokenInput">API Token</label>
+        <input type="password" id="saveToRestFormApiTokenInput" class="medium-input">
+      </div>
+      <div class="option second-level">
+        <label for="saveToRestFormApiFileFieldNameInput">File Field Name</label>
+        <input type="text" id="saveToRestFormApiFileFieldNameInput" class="medium-input">
+      </div>
+      <div class="option second-level">
+        <label for="saveToRestFormApiUrlFieldNameInput">URL Field Name</label>
+        <input type="text" id="saveToRestFormApiUrlFieldNameInput" class="medium-input">
+      </div>
+    </details>
+  </main>
+
 	<script type="module" src="../bg/ui-options.js"></script>
 </body>
 
