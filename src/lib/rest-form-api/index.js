@@ -28,7 +28,6 @@ export class RestFormApi {
 			method: "POST",
 			body: formData,
 			signal: this.controller.signal
-			// ❌ DO NOT set headers manually here
 		});
 
 		const text = await response.text();
