@@ -3,37 +3,22 @@
 
 <head>
   <meta charset="utf-8">
-  <title>InContext Capture options</title>
-  <link rel="stylesheet" href="options.minimized.css">
+  <title>Lingoport InContext Capture</title>
+  <link rel="stylesheet" href="options.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
 <body>
   <main>
-    <h3>InContext Capture Options</h3>
-    <details open>
-      <summary>Destination Settings</summary>
-      <div class="option">
-        <label for="saveToRestFormApiInput">Use Rest API</label>
-        <input type="radio" id="saveToRestFormApiInput" name="destinationInput">
-      </div>
-      <div class="option second-level">
-        <label for="saveToRestFormApiUrlInput">API URL</label>
-        <input type="text" id="saveToRestFormApiUrlInput" class="medium-input">
-      </div>
-      <div class="option second-level">
-        <label for="saveToRestFormApiTokenInput">API Token</label>
-        <input type="password" id="saveToRestFormApiTokenInput" class="medium-input">
-      </div>
-      <div class="option second-level">
-        <label for="saveToRestFormApiFileFieldNameInput">File Field Name</label>
-        <input type="text" id="saveToRestFormApiFileFieldNameInput" class="medium-input">
-      </div>
-      <div class="option second-level">
-        <label for="saveToRestFormApiUrlFieldNameInput">URL Field Name</label>
-        <input type="text" id="saveToRestFormApiUrlFieldNameInput" class="medium-input">
-      </div>
-    </details>
+    <label for="saveToRestFormApiUrlInput">InContext Server URL</label>
+    <input type="text" id="saveToRestFormApiUrlInput" placeholder="">
+
+    <label for="saveToRestFormApiTokenInput">Chrome Token</label>
+    <input type="password" id="saveToRestFormApiTokenInput" placeholder="">
+
+    <label for="saveToRestFormApiFileFieldNameInput">Email</label>
+    <input type="text" id="saveToRestFormApiFileFieldNameInput" placeholder="">
+		<button id="saveButton" disabled>Save Credentials</button>
   </main>
 
 	<script type="module" src="../bg/ui-options.js"></script>

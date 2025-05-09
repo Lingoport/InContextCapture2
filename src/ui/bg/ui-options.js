@@ -1,31 +1,36 @@
-// Minimal ui-options.js for RestFormApi settings only
 document.addEventListener("DOMContentLoaded", () => {
   const storage = chrome.storage?.sync || browser.storage?.sync;
 
   const ids = {
-    saveToRestFormApiInput: document.getElementById("saveToRestFormApiInput"),
     saveToRestFormApiUrlInput: document.getElementById("saveToRestFormApiUrlInput"),
     saveToRestFormApiTokenInput: document.getElementById("saveToRestFormApiTokenInput"),
     saveToRestFormApiFileFieldNameInput: document.getElementById("saveToRestFormApiFileFieldNameInput"),
-    saveToRestFormApiUrlFieldNameInput: document.getElementById("saveToRestFormApiUrlFieldNameInput"),
   };
+
+  const saveButton = document.getElementById("saveButton");
 
   // Load saved options
   storage.get(Object.keys(ids), (items) => {
     for (const key in ids) {
-      if (ids[key].type === "radio") {
-        ids[key].checked = items[key] || false;
-      } else {
-        ids[key].value = items[key] || "";
-      }
+      ids[key].value = items[key] || "";
     }
   });
 
-  // Save changes
+  // Enable button if any field changes
   for (const key in ids) {
-    ids[key].addEventListener("change", () => {
-      const value = ids[key].type === "radio" ? ids[key].checked : ids[key].value;
-      storage.set({ [key]: value });
+    ids[key].addEventListener("input", () => {
+      saveButton.disabled = false;
     });
   }
+
+  // Save when button is clicked
+  saveButton.addEventListener("click", () => {
+    const data = {};
+    for (const key in ids) {
+      data[key] = ids[key].value;
+    }
+    storage.set(data, () => {
+      saveButton.disabled = true;
+    });
+  });
 });
