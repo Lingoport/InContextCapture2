@@ -16,7 +16,7 @@ export class RestFormApi {
 		const blob = content instanceof Blob ? content : new Blob([content], { type: "text/html" });
 
 		const formData = new FormData();
-		formData.append("theFile", blob, filename || "InContext.html");
+		formData.append("theFile", blob, "InContext.html");
 		formData.append("theToken", serverToken);
 		formData.append("theEmail", email);
 
