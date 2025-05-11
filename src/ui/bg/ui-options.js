@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     input.addEventListener("input", () => {
       saveButton.disabled = false;
       status.textContent = "";
-      status.className = "";
+      status.classList.remove("success", "error");
     });
   });
 
@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!url.startsWith("http")) {
       status.textContent = "Invalid URL format";
-      status.className = "error";
+      status.classList.remove("success", "error");
+      status.classList.add("status", "error");
       return;
     }
 
@@ -42,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     http.open("POST", validateUrl, true);
     http.onreadystatechange = function () {
       if (http.readyState === 4) {
+        status.classList.remove("success", "error");
         if (http.responseText.includes("Chrome token successfully validated")) {
           const data = {
             saveToRestFormApiUrlInput: url,
@@ -50,13 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
           };
           storage.set(data, () => {
             status.textContent = "Credentials saved successfully.";
-            status.className = "success";
+            status.classList.add("status", "success");
             saveButton.disabled = true;
           });
-        } else {  
-					status.textContent = "Token validation failed.";
-          status.classList.remove("success", "error");
-          status.classList.add("error");
+        } else {
+          status.textContent = "Token validation failed.";
+          status.classList.add("status", "error");
         }
       }
     };

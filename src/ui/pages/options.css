@@ -33,13 +33,16 @@ input[type="password"] {
   width: 100%;
   box-sizing: border-box;
 }
+
 .status {
   font-size: 12px;
   margin-top: 6px;
 }
+
 .status.success {
   color: green;
 }
+
 .status.error {
   color: red;
 }
