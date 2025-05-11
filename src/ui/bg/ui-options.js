@@ -1,36 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
   const storage = chrome.storage?.sync || browser.storage?.sync;
 
-  const ids = {
-    saveToRestFormApiUrlInput: document.getElementById("saveToRestFormApiUrlInput"),
-    saveToRestFormApiTokenInput: document.getElementById("saveToRestFormApiTokenInput"),
-    saveToRestFormApiFileFieldNameInput: document.getElementById("saveToRestFormApiFileFieldNameInput"),
-  };
-
+  const urlInput = document.getElementById("saveToRestFormApiUrlInput");
+  const tokenInput = document.getElementById("saveToRestFormApiTokenInput");
+  const emailInput = document.getElementById("saveToRestFormApiFileFieldNameInput");
   const saveButton = document.getElementById("saveButton");
+  const status = document.getElementById("statusMessage");
 
   // Load saved options
-  storage.get(Object.keys(ids), (items) => {
-    for (const key in ids) {
-      ids[key].value = items[key] || "";
-    }
+  storage.get(["saveToRestFormApiUrlInput", "saveToRestFormApiTokenInput", "saveToRestFormApiFileFieldNameInput"], (items) => {
+    urlInput.value = items.saveToRestFormApiUrlInput || "";
+    tokenInput.value = items.saveToRestFormApiTokenInput || "";
+    emailInput.value = items.saveToRestFormApiFileFieldNameInput || "";
   });
 
-  // Enable button if any field changes
-  for (const key in ids) {
-    ids[key].addEventListener("input", () => {
+  // Enable save button on input change
+  [urlInput, tokenInput, emailInput].forEach(input => {
+    input.addEventListener("input", () => {
       saveButton.disabled = false;
+      status.textContent = "";
+      status.className = "";
     });
-  }
+  });
 
-  // Save when button is clicked
   saveButton.addEventListener("click", () => {
-    const data = {};
-    for (const key in ids) {
-      data[key] = ids[key].value;
+    const url = urlInput.value.trim();
+    const token = tokenInput.value.trim();
+
+    if (!url.startsWith("http")) {
+      status.textContent = "Invalid URL format";
+      status.className = "error";
+      return;
     }
-    storage.set(data, () => {
-      saveButton.disabled = true;
-    });
+
+    let validateUrl = url.endsWith("/") ? url + "validateToken" : url + "/validateToken";
+    const formData = new FormData();
+    formData.append("type", "chrome");
+    formData.append("token", token);
+
+    const http = new XMLHttpRequest();
+    http.open("POST", validateUrl, true);
+    http.onreadystatechange = function () {
+      if (http.readyState === 4) {
+        if (http.responseText.includes("Chrome token successfully validated")) {
+          const data = {
+            saveToRestFormApiUrlInput: url,
+            saveToRestFormApiTokenInput: token,
+            saveToRestFormApiFileFieldNameInput: emailInput.value.trim()
+          };
+          storage.set(data, () => {
+            status.textContent = "Credentials saved successfully.";
+            status.className = "success";
+            saveButton.disabled = true;
+          });
+        } else {  
+					status.textContent = "Token validation failed.";
+          status.classList.remove("success", "error");
+          status.classList.add("error");
+        }
+      }
+    };
+    http.send(formData);
   });
 });
