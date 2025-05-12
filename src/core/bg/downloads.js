@@ -619,11 +619,6 @@ function saveToClipboard(pageData) {
 }
 
 async function saveToRestFormApi(taskId, filename, content, url, token, restApiUrl, fileFieldName, urlFieldName) {
-	console.log("fileFieldName   "+fileFieldName)
-	console.log("urlFieldName   "+urlFieldName)
-	console.log("token   "+token)
-
-	console.log("restApiUrl   "+restApiUrl)
 
 	try {
 		const taskInfo = business.getTaskInfo(taskId);
