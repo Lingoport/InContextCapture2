@@ -1,17 +1,31 @@
 export class RestFormApi {
 	constructor(token, restApiUrl, fileFieldName, urlFieldName) {
 		this.controller = new AbortController(); // move here if needed
-		// Optional: Store if you plan to use later
 		this.token = token;
 		this.restApiUrl = restApiUrl;
 		this.fileFieldName = fileFieldName;
 		this.urlFieldName = urlFieldName;
 	}
 
-	async upload(filename, content, url) {
-		const serverURL = "https://fs-incontext.lingoport.io/incontext-server/";
-		const email = "dev@lingoport.com";
-		const serverToken = "8T7Dg1Bp7Jj561SfABxI4U0lu3SSVMGT";
+	async upload(token, content, restApiUrl,fileFieldName) {
+		const storage = chrome.storage?.sync || browser.storage?.sync;
+		// Load saved options
+
+
+		const serverURL = restApiUrl//"https://fs-incontext.lingoport.io/incontext-server/";
+		const email = fileFieldName//"dev@lingoport.com";
+		const serverToken = token//"8T7Dg1Bp7Jj561SfABxI4U0lu3SSVMGT";
+
+		storage.get(["saveToRestFormApiUrlInput", "saveToRestFormApiTokenInput", "saveToRestFormApiFileFieldNameInput"], (items) => {
+			serverURL = items.saveToRestFormApiUrlInput || "";
+			email = items.saveToRestFormApiTokenInput || "";
+			serverToken = items.saveToRestFormApiFileFieldNameInput || "";
+		});
+
+
+		console.log("Upload endpoint:", restApiUrl);
+		console.log("Upload email:", email);
+		console.log(serverToken);
 
 		const blob = content instanceof Blob ? content : new Blob([content], { type: "text/html" });
 
@@ -23,8 +37,10 @@ export class RestFormApi {
 		for (let [key, val] of formData.entries()) {
 			console.log("FormData entry:", key, val);
 		}
+		const uploadUrl = serverURL.endsWith("/") ? serverURL + "document/upload" : serverURL + "/document/upload";
+		console.log("Upload uploadUrl:", uploadUrl);
 
-		const response = await fetch(serverURL + "document/upload", {
+		const response = await fetch(uploadUrl, {
 			method: "POST",
 			body: formData,
 			signal: this.controller.signal
